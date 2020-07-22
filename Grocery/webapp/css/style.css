@@ -1,0 +1,124 @@
+/* Enter your custom styles here */
+
+@import url("https://fonts.googleapis.com/css2");
+
+
+.bgImage{
+background-image:url("../Images/bg.png");
+background-size:cover ;
+width:100%; 
+height:100%;
+background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+ 
+}
+.bgImage1{
+background-image:url("../Images/aa.png");
+background-size:cover ;
+width:100%; 
+height:100%;
+background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+ 
+}
+
+.carousel{
+	background-color: transparent;
+}
+
+
+
+.idDialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-60%, -50%) !important;
+}
+
+.welcomeCarouselText {
+	color: black;
+	display: inline;
+	position: relative;
+	bottom: 0;
+	padding: 1rem;
+	font-size: 1.5rem;
+	width: 100%;
+	text-shadow: 0 0 0.125rem black;
+}
+.bgimage{
+	  background-size:cover;
+}
+
+.sapMSFF{
+	border-radius:12px;
+}
+.search_field{
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.terms {
+    margin-top: 10%;
+}
+
+.customCellImageBackground {
+	color: #fff;
+	background-image: url("../Images/Logo.jpg");
+	background-size: 100% auto;
+	background-position: 0 80%;
+}
+
+.box{
+	background:#98bf21;
+	height:100px;
+	width:100px;
+	margin:6px;
+}
+
+.title{
+	text-align:center;
+	
+	background-color: transparent;
+	/*background:#dbe90c75;*/
+}
+.text{
+	font-family: 'Modak', cursive;
+}
+.titleText{
+	font-family: 'Modak', cursive;
+    font-size: 3rem;
+    color: black;
+    margin-bottom:1.5rem;
+}
+	
+
+
+.AdDashtile1{
+background-color: #cea3d0;
+
+}
+.colorWh{
+	color:white;
+}
+.AdDashtile2{
+background-color:#8fddf9;
+
+
+}
+.AdDashtile3{
+background-color: #ff8a8a;
+
+
+}
+.AdDashtile4{
+background-color: #cfff9e;
+
+
+}
+.sapMGTHdrTxt>.sapMText {
+   color: #6a6d70;
+    font-weight: bold;
+}

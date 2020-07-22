@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ResponsivePopover title="enter your zipcode" class="sapUiPopupWithPadding" placement="Bottom">
+		<beginButton>
+			<Button text="Cancel" press="fnPopCloseButton"/>
+		</beginButton>
+		<content>
+			<SearchField placeholder="Zipcode"/>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

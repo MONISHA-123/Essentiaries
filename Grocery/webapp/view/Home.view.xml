@@ -1,0 +1,63 @@
+<mvc:View controllerName="com.inkathon.Grocery.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" 	xmlns:tnt="sap.tnt" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" 	xmlns:card="sap.f.cards" xmlns:grid="sap.ui.layout.cssgrid" xmlns:fa="sap.f">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+				
+				<customHeader>
+					<tnt:ToolHeader>
+						<Button icon="sap-icon://globe" type="Transparent" press="fnOnZipCode">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}"/>
+						<Button icon="sap-icon://bell" type="Transparent" tooltip="{i18n>Notification}"/>
+						<Button icon="sap-icon://person-placeholder" type="Transparent" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>
+						<Avatar visible="false"  displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu" id="accountMenu"/>
+					</tnt:ToolHeader>
+				</customHeader>
+				<MessageStrip id="idConfirmation" type="Success" showIcon="true"
+					text="Acccount created successfully!!!Login to Shop" class="sapUiMediumMarginBottom"
+					visible="false"></MessageStrip>
+				<VBox class="title">
+					<Title class="titleText" text="Essentiaries" level="H3"></Title>
+					<SearchField class="search_field" width="70%" id="searchField" placeholder="Search for Products,Brands and More" liveChange=".onSuggest"
+						enableSuggestions="true" search=".onSearch" suggest=".onSuggest"
+						suggestionItems="{ path: 'oTableModel>/ProductCollection', sorter: { path: 'Name' } }">
+						<SuggestionItem text="{oTableModel>Name}" description="{path:'oTableModel>Price'} {path:'oTableModel>CurrencyCode'}"
+							key="{oTableModel>ProductId}"/>
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</layoutData>
+					</SearchField>
+				</VBox>
+				<VBox class="sapUiLargeMargin">
+					<Title text="Shop by categories" level="H3"/>
+					<HeaderContainer scrollStep="500" id="container1" scrollStepByItem="1" showOverflowItem="true" content="{oProductModel>/Category}"
+						class="sapUiSmallMargin">
+						<FlexBox alignItems="Center" justifyContent="Center">
+							<l:Grid defaultSpan="XL3 L3 M3 S6">
+								<l:content class="sapUiSmallMargin">
+									<HBox >
+										<VBox alignItems="Center">
+											<Avatar src="{oProductModel>icon}" displaySize="L" displayShape="Square" press="handleResponsivePopoverPress" backgroundColor="Transparent"/>
+											<Text textAlign="Center" text="{oProductModel>categoryname}" class="sapUiSmallMarginTop"/>
+										</VBox>
+									</HBox>
+								</l:content>
+							</l:Grid>
+						</FlexBox>
+					</HeaderContainer>
+				</VBox>
+		
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
