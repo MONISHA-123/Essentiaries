@@ -247,11 +247,7 @@ sap.ui.define([
 				type: "GET"
 			});
 		},
-
-		getRouter: function () {
-			return UIComponent.getRouterFor(this);
-		},
-
+	
 		onPress: function (oEvent) {
 			var oTable, oTableModel1, oItem, sPath, oSelectedRow;
 			// var oModel = this.getView().getModel("oProductModel");
@@ -292,7 +288,7 @@ sap.ui.define([
 			var oData = this.getView().getModel("oProductModel").getProperty(sPath);
 			var sUrl = "/AdminModule/api/product/" + id;
 			console.log(sUrl);
-			// this.fnPutCall(sUrl, oData);
+			this.fnPutCall(sUrl, oData);
 			oEvent.getSource().getParent().getParent().getCells()[4].getItems()[0].setVisible(false);
 			oEvent.getSource().getParent().getParent().getCells()[4].getItems()[1].setVisible(true);
 		/*	for(var i=0;i<=2;i++)

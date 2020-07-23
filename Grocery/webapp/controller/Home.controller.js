@@ -16,7 +16,7 @@ sap.ui.define([
 	return Controller.extend("com.inkathon.Grocery.controller.Home", {
 		onInit: function () {
 			this.token = "";
-			this.forgotOTP=0;
+			this.forgotOTP = 0;
 			this.oRegistration = {
 				"email": "",
 				"fname": "",
@@ -27,7 +27,9 @@ sap.ui.define([
 			};
 
 			var oEmptyModel = new JSONModel();
-			oEmptyModel.setProperty("/ForgotPassword",{"email":""});
+			oEmptyModel.setProperty("/ForgotPassword", {
+				"email": ""
+			});
 			this.getView().setModel(oEmptyModel, "oEmptyModel");
 			this.GETMethod_CATE();
 		},
@@ -53,13 +55,12 @@ sap.ui.define([
 					that.cateCount = data.length;
 
 					that.getOwnerComponent().getModel("oProductModel").setProperty("/Category", data);
-					//console.log(data);
 
 				},
 				type: "GET"
 			}).always(function (data, status, xhr) {
 				that.token = xhr.getResponseHeader("x-CSRF-Token");
-				//console.log(that.token);
+
 			});
 		},
 		getRouter: function () {
@@ -141,7 +142,7 @@ sap.ui.define([
 		},
 		//fragment for reset password
 		fnOnResetPass: function () {
-			
+
 			this._oDialog.close();
 
 			this._oDialog.destroy();
@@ -170,125 +171,113 @@ sap.ui.define([
 
 		fnforgetPassOTP: function () {
 			var sEmail = this.getView().getModel("oEmptyModel").getProperty("/ForgotPassword/email");
-				var mailregex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-					var that = this;
+			var mailregex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			var that = this;
 
-			var sUrl = "/AdminModule/api/forgotpassword?email="+sEmail;
-	// console.log(this.getView().getModel("oEmptyModel"));
-			if (mailregex.test(sEmail))
-				{
-						this.busyIndicator(4000);
+			var sUrl = "/AdminModule/api/forgotpassword?email=" + sEmail;
 		
-			
-			$.ajax({
-				url: sUrl,
-				data: null,
-				async: true,
-				dataType: "json",
-				contentType: "application/json; charset=utf-8",
-				headers: {
-					"x-CSRF-Token": "fetch"
-				},
-				error: function (err) {
-					MessageToast.show("Category Fetch Destination Failed");
-				},
-				success: function (data, status, xhr) {
-
-				
-					that.forgotOTP = data;
-				console.log(that.forgotOTP);
-				
-				},
-				complete: function (xhr, status) {
-						that._oDialog.close();
-
-			that._oDialog.destroy();
-
-			that._oDialog = null;
-					
-			if (!that._oDialog) {
-
-				that._oDialog = sap.ui.xmlfragment("idForgetPass", "com.inkathon.Grocery.fragments.ResetPassword", that);
-
-			}
-
-			that.getView().addDependent(that._oDialog);
-
-			Fragment.byId("idForgetPass", "fogetPass").setVisible(false);
-
-			Fragment.byId("idForgetPass", "forgetPassOTP").setVisible(true);
-
-			Fragment.byId("idForgetPass", "resetPassPage").setVisible(false);
-
-			// Fragment.byId("idForgetPass", "NavBack").setVisible(false);
-
-			// Fragment.byId("idForgetPass", "info").setText("We've sent an OTP to the email . Please enter it below to complete verification.");
-			// Fragment.byId("idForgetPass", "resend").setEnabled(false);
-			that._oDialog.open();
-
-			var time = Fragment.byId("idForgetPass", "timer");
-
-			var fiveMinutesLater = new Date();
-
-			var scs = fiveMinutesLater.setMinutes(fiveMinutesLater.getMinutes() + 3);
-
-			var countdowntime = scs;
-
-			var x = setInterval(function () {
-
-				var now = new Date().getTime();
-
-				var cTime = countdowntime - now;
-
-				var minutes = Math.floor((cTime % (1000 * 60 * 60)) / (1000 * 60));
-
-				var second = Math.floor((cTime % (1000 * 60)) / 1000);
-
-				time.setText("OTP Expires in " + minutes + ":" + second + " Minutes");
-
-				if (cTime < 0) {
-
-					clearInterval(x);
-
-					time.setText("OTP Expires in 0:0 Minutes");
-					// Fragment.byId("idForgetPass", "resend").setEnabled(true);
-
-				}
-
-			});
-					
-					},
-				type: "GET"
-			});
 
 
-		}
-			else
-			MessageToast.show("Invalid Email ID");
+				if (mailregex.test(sEmail)) {
+					this.busyIndicator(4000);
+
+					$.ajax({
+						url: sUrl,
+						data: null,
+						async: true,
+						dataType: "json",
+						contentType: "application/json; charset=utf-8",
+						headers: {
+							"x-CSRF-Token": "fetch"
+						},
+						error: function (err) {
+							MessageToast.show("Category Fetch Destination Failed");
+						},
+						success: function (data, status, xhr) {
+
+							that.forgotOTP = data;
+
+						},
+						complete: function (xhr, status) {
+							that._oDialog.close();
+
+							that._oDialog.destroy();
+
+							that._oDialog = null;
+
+							if (!that._oDialog) {
+
+								that._oDialog = sap.ui.xmlfragment("idForgetPass", "com.inkathon.Grocery.fragments.ResetPassword", that);
+
+							}
+
+							that.getView().addDependent(that._oDialog);
+
+							Fragment.byId("idForgetPass", "fogetPass").setVisible(false);
+
+							Fragment.byId("idForgetPass", "forgetPassOTP").setVisible(true);
+
+							Fragment.byId("idForgetPass", "resetPassPage").setVisible(false);
+
+							// Fragment.byId("idForgetPass", "NavBack").setVisible(false);
+
+							// Fragment.byId("idForgetPass", "info").setText("We've sent an OTP to the email . Please enter it below to complete verification.");
+							// Fragment.byId("idForgetPass", "resend").setEnabled(false);
+							that._oDialog.open();
+
+							var time = Fragment.byId("idForgetPass", "timer");
+
+							var fiveMinutesLater = new Date();
+
+							var scs = fiveMinutesLater.setMinutes(fiveMinutesLater.getMinutes() + 3);
+
+							var countdowntime = scs;
+
+							var x = setInterval(function () {
+
+								var now = new Date().getTime();
+
+								var cTime = countdowntime - now;
+
+								var minutes = Math.floor((cTime % (1000 * 60 * 60)) / (1000 * 60));
+
+								var second = Math.floor((cTime % (1000 * 60)) / 1000);
+
+								time.setText("OTP Expires in " + minutes + ":" + second + " Minutes");
+
+								if (cTime < 0) {
+
+									clearInterval(x);
+
+									time.setText("OTP Expires in 0:0 Minutes");
+									// Fragment.byId("idForgetPass", "resend").setEnabled(true);
+
+								}
+
+							});
+
+						},
+						type: "GET"
+					});
+
+				} else
+					MessageToast.show("Invalid Email ID");
 		},
 
 		fnOTP: function (oEvent) {
-			var temp="";
-			this.otp = oEvent.getSource().getValue();
-			if(this.otp){
-			for(var i=0;i<=10;i=i+2){
-			temp+=this.otp[i];}
-			this.otp=parseInt(temp, 10);
-			/*if(this.forgotOTP===this.opt)
-			MessageToast.show("Crct");*/
-			}
+		
+			// this.otp = oEvent.getSource().getValue();
 			
-
 		},
 		fnResetPassLogin: function () {
-			console.log(this.forgotOTP);
-			console.log(typeof(this.forgotOTP));
-			console.log(this.otp);
-			console.log(typeof(this.otp));
-			var a=this.forgotOTP;
-			var b=this.opt;
-			if(a==b)
-			{
+				var temp = "";
+				this.otp=this.getView().getModel("oEmptyModel").getProperty("/ForgotPassword/otp");
+					for (var i = 0; i <= 10; i = i + 2) {
+					temp += this.otp[i];
+				}
+			if (this.otp) {
+			
+			if (this.forgotOTP === parseInt(temp, 10)) {
 			this._oDialog.close();
 
 			this._oDialog.destroy();
@@ -308,14 +297,17 @@ sap.ui.define([
 			Fragment.byId("ForgetPass", "forgetPassOTP").setVisible(false);
 
 			Fragment.byId("ForgetPass", "resetPassPage").setVisible(true);
-this._oDialog.open();
+			 Fragment.byId("idForgetPass", "navBack").setVisible(false);
+			this._oDialog.open();
+				} else {
+				MessageToast.show("Incorrect OTP");
 			}
-			else
-			MessageToast.show("Incorrect OTP");
-	
+
+			}
+		
 		},
 		fnOnLoginValidation: function () {
-
+		this.getView().getModel("oEmptyModel").setProperty("/ForgotPassword",{});
 			var sEmail = this.getView().getModel("oEmptyModel").getProperty("/oList/Email");
 
 			var sPassword = this.getView().getModel("oEmptyModel").getProperty("/oList/password");
@@ -332,7 +324,7 @@ this._oDialog.open();
 
 			else {
 				var sCredentials = "email=" + sEmail + "&password=" + sPassword;
-				console.log(sCredentials);
+
 				var that = this;
 				this.busyIndicator(2000);
 				var sUrl = "/AdminModule/api/login?" + sCredentials;
@@ -349,8 +341,8 @@ this._oDialog.open();
 						MessageToast.show("Category Fetch Destination Failed");
 					},
 					success: function (data, status, xhr) {
-						console.log(data);
-						if (data.email =="" )
+
+						if (data.email == "")
 							MessageToast.show("Email ID does not exist");
 						else if (data.email == sEmail && data.password != sPassword)
 							MessageToast.show("Password does not match with the id provided");
@@ -377,7 +369,7 @@ this._oDialog.open();
 					type: "GET"
 				}).always(function (data, status, xhr) {
 					that.token = xhr.getResponseHeader("x-CSRF-Token");
-					console.log(that.token);
+
 				});
 
 			}
@@ -597,7 +589,7 @@ this._oDialog.open();
 				var oData = this.getView().getModel("oEmptyModel").getProperty("/Registration");
 				delete oData.terms;
 				delete oData.confirmPass;
-				console.log(oData);
+
 				/*	var oRegistrationModel = new JSONModel();
 
 					oRegistrationModel.setData(oDetails);
@@ -718,6 +710,61 @@ this._oDialog.open();
 		},
 		busyIndicator: function (sec) {
 			this.showBusyIndicator(sec);
+		},
+		fnNewPassUpdate: function () {
+			var that = this;
+			var oData = this.getView().getModel("oEmptyModel").getProperty("/ForgotPassword");
+			var sCredentials = "email=" + oData.email + "&password=" + oData.np;
+			if (oData.np === oData.cp) {
+				var sUrl = "/AdminModule/api/login?" + sCredentials;
+				$.ajax({
+					url: sUrl,
+					data: null,
+					async: true,
+					dataType: "json",
+					contentType: "application/json; charset=utf-8",
+					headers: {
+						"x-CSRF-Token": "fetch"
+					},
+					error: function (err) {
+						MessageToast.show("Category Fetch Destination Failed");
+					},
+					success: function (data, status, xhr) {
+						that.getOwnerComponent().getModel("oProductModel").setProperty("/LoginUser", data);
+						data.password=oData.np;
+						console.log(data);
+						var sInitial = (data.fname).charAt(0) + (data.lname).charAt(0);
+						that.getView().byId("accountMenu").setInitials(sInitial);
+						that.getView().byId("accountMenu").setVisible(true);
+						that.getView().byId("signIn").setVisible(false);
+						$.ajax({
+							type: "PUT",
+							url: "/AdminModule/api/update",
+							data: JSON.stringify(data),
+							dataType: "json",
+							"headers": {
+								"Content-Type": "application/json",
+								"x-CSRF-Token": that.token
+							},
+
+							success: function () {
+								MessageToast.show("Data saved successfully");
+
+							},
+						
+						});
+
+						that._oDialog.close();
+
+						that._oDialog.destroy();
+
+						that._oDialog = null;
+					},
+					type: "GET"
+				});
+
+			}
+
 		}
 	});
 });
