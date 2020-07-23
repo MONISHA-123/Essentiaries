@@ -10,10 +10,11 @@ sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/viz/ui5/data/FlattenedDataset",
 	"sap/m/MessageBox",
-	"sap/ui/core/BusyIndicator"
+	"sap/ui/core/BusyIndicator",
+		"sap/ui/core/routing/History"
 	
 ], function (Controller, JSONModel, MessageToast, Fragment, formatter, Filter, Sorter, FilterOperator, UIComponent, FlattenedDataset,
-	MessageBox, BusyIndicator) {
+	MessageBox, BusyIndicator,History) {
 	"use strict";
 
 	return Controller.extend("com.inkathon.Grocery.controller.Admin", {
@@ -149,7 +150,7 @@ sap.ui.define([
 				});
 			oVizFrame.addFeed(feedValueAxis);
 			oVizFrame.addFeed(feedCategoryAxis);
-			this.byId("BrandTab").setText("Brands " + String.fromCharCode(38) + " Category");
+			// this.byId("BrandTab").setText("Brands " + String.fromCharCode(38) + " Category");
 			
 
 		},
@@ -166,7 +167,8 @@ sap.ui.define([
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
 			} else {
-				this.getRouter().navTo("Home", {}, true);
+				// this.getOwnerComponent().getRouter().navTo("Home");
+				 this.getRouter().navTo("Home", {}, true);
 
 			}
 		},
@@ -272,7 +274,7 @@ sap.ui.define([
 		/*	for(var i=0;i<=2;i++)
 				oEvent.getSource().getParent().getParent().getCells()[4].getItems()[i].setVisible(true);*/
 
-			for (i = 1; i <= 3; i++)
+			for (var i = 1; i <= 3; i++)
 				oEvent.getSource().getParent().getParent().getCells()[i].setEditable(true);
 
 		},

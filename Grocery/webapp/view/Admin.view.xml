@@ -1,28 +1,29 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.inkathon.Grocery.controller.Admin"
-	xmlns:html="http://www.w3.org/1999/xhtml" 	xmlns:tnt="sap.tnt" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" 	xmlns:tnt="sap.tnt" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.f"
 	xmlns:viz="sap.viz.ui5.controls">
 	<App>
 		<pages>
 			<Page title="Title" showNavButton="true" navButtonPress="onNavBack" id="page">
 			
-				<!--	<customHeader>
+					<customHeader>
 						<tnt:ToolHeader color="black">
-							<Title text="{i18n>BrandName}">
+								<ToolbarSpacer/>
+							<Title text="{i18n>ShopName}">
 								<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>
 							</Title>
 							<ToolbarSpacer/>
-							<Button icon="sap-icon://bell" type="Transparent"/>
-							<Button icon="sap-icon://person-placeholder" type="Transparent"/>
+							
+							<Button icon="sap-icon://log" tooltip="Log out" type="Transparent" press="onNavBack" />
 						</tnt:ToolHeader>
-					</customHeader>-->
+					</customHeader>
 					<content>
 						<IconTabBar id="idIconTabBar" select="handleIconTabBarSelect" class="sapUiResponsiveContentPadding" stretchContentHeight="true">
 							<items>
-								<IconTabFilter showAll="true" text="DashBoard" key="All">
+								<IconTabFilter  text="DashBoard" key="All" icon="sap-icon://supplier" >
 									<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
-										<FlexBox alignItems="Start" justifyContent="Center" class="sapUiTinyMarginTop">
+									<!--	<FlexBox alignItems="Start" justifyContent="Center" class="sapUiTinyMarginTop">
 											<l:Grid defaultSpan="XL3 L3 M3 S6">
 												<GenericTile header="Order Pending" press="press" sizeBehavior="Responsive" class="AdDashtile1">
 													<TileContent>
@@ -45,7 +46,67 @@
 													</TileContent>
 												</GenericTile>
 											</l:Grid>
-										</FlexBox>
+										</FlexBox>-->
+										
+										
+										<f:GridList>
+											<f:GridListItem class="AdDashtile1">
+												<VBox height="100%">
+													<VBox class="sapUiSmallMargin">
+														<layoutData>
+															<FlexItemData growFactor="1" shrinkFactor="0"/><!-- Don't shrink below minimum size. Fill space if available. --></layoutData>
+														<Title text="Order Pending" wrapping="true"/>
+														<NumericContent value="3" icon="sap-icon://pending" withMargin="false"/>
+													</VBox>
+												</VBox>
+												
+											</f:GridListItem>
+												<f:GridListItem class="AdDashtile2">
+												<VBox height="100%">
+													<VBox class="sapUiSmallMargin">
+														<layoutData>
+															<FlexItemData growFactor="1" shrinkFactor="0"/><!-- Don't shrink below minimum size. Fill space if available. --></layoutData>
+														<Title text="Order in Process" wrapping="true"/>
+															<NumericContent value="3" icon="sap-icon://process" withMargin="false"/>
+													</VBox>
+												</VBox>
+												
+											</f:GridListItem>
+												
+												<f:GridListItem class="AdDashtile3">
+												<VBox height="100%">
+													<VBox class="sapUiSmallMargin">
+														<layoutData>
+															<FlexItemData growFactor="1" shrinkFactor="0"/><!-- Don't shrink below minimum size. Fill space if available. --></layoutData>
+														<Title text="Cancel Order" wrapping="true"/>
+														<NumericContent value="3" icon="sap-icon://sys-cancel" withMargin="false"/>
+													</VBox>
+												</VBox>
+												
+											</f:GridListItem>
+											
+											
+												<f:GridListItem class="AdDashtile4">
+												<VBox height="100%">
+													<VBox class="sapUiSmallMargin">
+														<layoutData>
+															<FlexItemData growFactor="1" shrinkFactor="0"/><!-- Don't shrink below minimum size. Fill space if available. --></layoutData>
+														<Title text="Total Income" wrapping="true"/>
+													<NumericContent value="3" icon="sap-icon://money-bills" withMargin="false"/>
+													</VBox>
+												</VBox>
+												
+											</f:GridListItem>
+										</f:GridList>
+										
+										
+										
+										
+										
+										
+										
+										
+										
 										<l:Grid id="gridHeader" defaultSpan="XL5 L5 M6 S12">
 											<l:content>
 												<viz:VizFrame id="idcolumn" width="100%">
@@ -74,7 +135,7 @@
 									</ScrollContainer>
 								</IconTabFilter>
 								<IconTabSeparator/>
-								<IconTabFilter icon="sap-icon://order-status" iconColor="Positive" text="Orders" key="Orders">
+								<IconTabFilter icon="sap-icon://order-status"  text="Orders" key="Orders">
 									<VBox>
 										<Table id="idOrderTable1" inset="false" alternateRowColors="true" items="">
 											<headerToolbar>
@@ -143,7 +204,7 @@
 									</VBox>
 								</IconTabFilter>
 								<IconTabSeparator/>
-								<IconTabFilter text="Products" icon="sap-icon://product" key="All">
+								<IconTabFilter text="Products" icon="sap-icon://product"  key="All">
 									<VBox>
 										<Table id="idProductsTable1" inset="false" alternateRowColors="true" items="{ path: 'oProductModel>/Product'}">
 											<headerToolbar>
@@ -245,7 +306,7 @@
 									</VBox>
 								</IconTabFilter>
 								<IconTabSeparator/>
-								<IconTabFilter text="Promotions" showAll="true" key="All">
+								<IconTabFilter text="Promotions"  key="All" icon="sap-icon://activate" >
 									<Table inset="false" alternateRowColors="true" items="">
 										<headerToolbar>
 											<OverflowToolbar>
@@ -300,7 +361,7 @@
 									</Table>
 								</IconTabFilter>
 								<IconTabSeparator/>
-								<IconTabFilter showAll="true" key="All" id="BrandTab">
+								<IconTabFilter  key="All" id="BrandTab" icon="sap-icon://bullet-text"  text="Brands" >
 									<VBox>
 										<Table id="brandtable" inset="false" alternateRowColors="true" items="{ path: 'oProductModel>/Brand'}">
 											<headerToolbar>
