@@ -1,0 +1,100 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.inkathon.Grocery.controller.Product"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:f="sap.f" >
+	<App>
+		<pages>
+			<Page title="Title">
+			<customHeader>
+						<tnt:ToolHeader class="ToolbarColor">
+							<Button icon="sap-icon://globe" type="Transparent" press="fnOnZipCode" class="fontWhite" >
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+								<ToolbarSpacer/>
+							<Title  text="Essentiaries" level="H3"/>
+							<ToolbarSpacer/>
+							<!--<Button icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}"/>-->
+							<Button icon="sap-icon://bell" type="Transparent" tooltip="{i18n>Notification}" class="fontWhite"/>
+							<Button icon="sap-icon://person-placeholder" type="Transparent" press="fnOnUser" tooltip="Login/sign Up" class="fontWhite">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+							<Avatar visible="false" initials="IS" displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu"/>
+						</tnt:ToolHeader>
+					</customHeader>
+					<OverflowToolbar id="otb2">
+						<Button text="Category" icon="sap-icon://grid" type="Transparent" press="fnSelectCategory" class="button fontWhite">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>	<ToolbarSpacer/>
+						<Button text="Home" type="Transparent" class="navBarFontOrange"/>
+						<Button text="Offers" type="Transparent" class="navBarFontOrange"/>
+						<Button text="Contact Us" type="Transparent" class="navBarFontOrange"/>
+						<ToolbarSpacer/>
+							<Button text="Cart"  icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}" class="button fontWhite"/>
+					</OverflowToolbar>
+					<Breadcrumbs currentLocationText="Category" class="sapUiSmallMargin">
+						<Link press="onPress" text="Home"/>
+						<!--<Link press="onPress" text="Category"/>-->
+					</Breadcrumbs>
+					<OverflowToolbar>
+						<Text text="Product"/>
+						<ToolbarSpacer/>
+						<ComboBox >
+							<core:Item text="Popularity" key="Popularity"/>
+							<core:Item text="Price: High to Low" key="HTL"/>
+							<core:Item text="Price: Low to High" key="LTH"/>
+							<core:Item text="Sort A-Z" key="A-Z"/>
+						</ComboBox>
+						<Button text="Filter" press="fnFilter" icon="sap-icon://filter"/>
+					</OverflowToolbar>
+						<f:GridList id="gridList"
+					
+						items="{oProductModel>/Product}">
+				<f:GridListItem>
+					<VBox height="100%"  alignItems="Center">
+						
+							<layoutData>
+								<FlexItemData growFactor="1" shrinkFactor="0" /><!-- Don't shrink below minimum size. Fill space if available. -->
+							</layoutData>
+								
+												<GenericTile class=" tileLayout" press="press" backgroundImage="{oProductModel>image}"></GenericTile>
+												<VBox   alignItems="Center">
+													<Title text="{oProductModel>productname}" level="H3" class="sapUiTinyMarginTop"></Title>
+													<!--<Text text="{oProductModel>brandname}" class="sapUiTinyMarginTop" ></Text>-->
+													<Text text="{oProductModel>size}{oProductModel>unitshort}" class="sapUiTinyMarginTop"></Text>
+													<RatingIndicator id="RI_XS" maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="12px" tooltip="Rating Tooltip"/>
+													<Text text="MRP : RS {oProductModel>price}"></Text>
+													<Button icon="sap-icon://cart" text="Add to Cart" press="fnCart" class="sapUiTinyMarginTop"></Button>
+													<StepInput value="1" width="10%" min="0" visible="false" id="stepinput" class="sapUiTinyMarginTop"></StepInput>
+												</VBox>
+										
+					</VBox>
+				</f:GridListItem>
+			</f:GridList>
+					<!--	<FlexBox alignItems="Center" justifyContent="Center" items="{oProductModel>/Product}">
+								<l:Grid defaultSpan="XL3 L3 M4 S6">
+									<l:content >
+										<HBox >
+											<VBox>
+												<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" press="press" backgroundImage="{oProductModel>image}"></GenericTile>
+												<VBox class="sapUiTinyMarginBegin tilecolor" alignItems="Center">
+													<Title text="{oProductModel>productname}" level="H3" class="sapUiTinyMarginTop"></Title>
+												
+													<Text text="{oProductModel>size}{oProductModel>unitshort}" class="sapUiTinyMarginTop"></Text>
+													<RatingIndicator id="RI_XS" maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="12px" tooltip="Rating Tooltip"/>
+													<Text text="MRP : RS {oProductModel>price}"></Text>
+													<Button icon="sap-icon://cart" text="Add to Cart" press="fnCart" class="sapUiTinyMarginTop"></Button>
+													<StepInput value="1" width="10%" min="0" visible="false" id="stepinput" class="sapUiTinyMarginTop"></StepInput>
+												</VBox>
+											</VBox>
+										</HBox>
+									</l:content>
+								</l:Grid>
+							</FlexBox>-->
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

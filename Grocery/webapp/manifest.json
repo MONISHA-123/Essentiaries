@@ -94,6 +94,18 @@
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["productDetails"]
+			}, {
+				"name": "userDashBoard",
+				"pattern": "userDashBoard",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["userDashBoard"]
+			}, {
+				"name": "Product",
+				"pattern": "Product",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Product"]
 			}],
 			"targets": {
 				"TargetHome": {
@@ -113,6 +125,14 @@
 					"viewType": "XML",
 					"viewName": "productDetails",
 					"viewLevel": 3
+				},
+				"userDashBoard": {
+					"viewType": "XML",
+					"viewName": "userDashBoard"
+				},
+				"Product": {
+					"viewType": "XML",
+					"viewName": "Product"
 				}
 			}
 		}

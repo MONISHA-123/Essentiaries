@@ -4,8 +4,8 @@
 
 
 .bgImage{
-background-image:url("../Images/bg.png");
-background-size:cover ;
+background-image:url("../images/veg.jpg");
+background-size:contain ;
 width:100%; 
 height:100%;
 background-attachment: fixed;
@@ -14,16 +14,19 @@ background-attachment: fixed;
  
 }
 .bgImage1{
-background-image:url("../Images/aa.png");
-background-size:cover ;
-width:100%; 
-height:100%;
-background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
- 
-}
+background-image:url("../images/veg.jpg");
+/*background-position: center center;*/
+/*			background-repeat:  no-repeat;*/
+/*			background-attachment: scroll;*/
+/*			background-size:  cover;*/
+/*			width:100%;*/
+/*				height:auto;*/
+  
 
+}
+.ToolbarColor{
+	background-color: #0F6265 !important;
+}
 .carousel{
 	background-color: transparent;
 }
@@ -52,7 +55,7 @@ background-attachment: fixed;
 }
 
 .sapMSFF{
-	border-radius:12px;
+	border-radius:14px;
 }
 .search_field{
 	top: 50%;
@@ -90,7 +93,7 @@ background-attachment: fixed;
 .titleText{
 	font-family: 'Modak', cursive;
     font-size: 3rem;
-    color: black;
+    color:#E2605B;
     margin-bottom:1.5rem;
 }
 	
@@ -121,4 +124,21 @@ background-color: #cfff9e;
 .sapMGTHdrTxt>.sapMText {
    color: #6a6d70;
     font-weight: bold;
+}
+.ToolbarColor{
+	background-color: #1C8FA0 !important;
+}
+.button{
+		background-color: #F5B566 !important;
+		font-weight:bold;
+}
+.button.sapMBtnBack,.button .sapMBtnTransparent {
+	color:white;
+	font-weight:bold;
+}
+.navBarFontOrange.sapMBtnBack,.navBarFontOrange .sapMBtnTransparent {
+	color: #F5B566;
+}
+.footer{
+	background-color:#ffffff !important;
 }

@@ -259,7 +259,7 @@ sap.ui.define([
 			oItem = oEvent.getSource();
 			sPath = oItem.getBindingContextPath();
 			oSelectedRow = oTableModel1.getProperty(sPath);
-			console.log(oSelectedRow);
+			
 			oModel.setProperty("/oSelectedRow", oSelectedRow);
 
 			this.getRouter().navTo("productDetails", {
@@ -929,8 +929,5 @@ sap.ui.define([
 		busyIndicator: function (sec) {
 			this.showBusyIndicator(sec);
 		}
-
-
 	});
-
 });

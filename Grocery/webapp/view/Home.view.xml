@@ -1,61 +1,168 @@
-<mvc:View controllerName="com.inkathon.Grocery.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" 	xmlns:tnt="sap.tnt" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" 	xmlns:card="sap.f.cards" xmlns:grid="sap.ui.layout.cssgrid" xmlns:fa="sap.f">
+<mvc:View controllerName="com.inkathon.Grocery.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt" xmlns:l="sap.ui.layout" xmlns:card="sap.f.cards" xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:f="sap.f">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
+					<customHeader>
+						<tnt:ToolHeader class="ToolbarColor">
+							<Button icon="sap-icon://globe" type="Transparent" press="fnOnZipCode">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+							<ComboBox>
+									<core:ListItem key="Mumbai" text="Mumbai" icon="sap-icon://map"/>
+									<core:ListItem key="Kolkata" text="Kolkata" icon="sap-icon://map"/>
+									<core:ListItem key="Chennai" text="Chennai" icon="sap-icon://map"/>
+									<core:ListItem key="Bangalore" text="Bangalore" icon="sap-icon://map"/>
+							</ComboBox>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}"/>
+							<Button icon="sap-icon://bell" type="Transparent" tooltip="{i18n>Notification}"/>
+							<Button icon="sap-icon://person-placeholder" type="Transparent" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+							<Avatar visible="false" displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu" id="accountMenu"/>
+						</tnt:ToolHeader>
+					</customHeader>
+					<MessageStrip id="idConfirmation" type="Success" showIcon="true" text="Acccount created successfully!!!Login to Shop"
+						class="sapUiMediumMarginBottom" visible="false"></MessageStrip>
+					<VBox class="title " alignItems="Center">
+						<Title class="titleText sapUiLargeMargin" text="Essentiaries" level="H3"></Title>
+						<SearchField class="search_field" width="80%" id="searchField" placeholder="Search for Products,Brands and More" liveChange=".onSuggest"
+							enableSuggestions="true" search=".onSearch" suggest=".onSuggest"
+							suggestionItems="{ path: 'oTableModel>/ProductCollection', sorter: { path: 'Name' } }">
+							<SuggestionItem text="{oTableModel>Name}" description="{path:'oTableModel>Price'} {path:'oTableModel>CurrencyCode'}"
+								key="{oTableModel>ProductId}"/>
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+					</VBox>
+					<VBox class="sapUiLargeMargin">
+						<Title text="Shop by categories" level="H3"/>
+						<HeaderContainer scrollStep="500" id="container1" scrollStepByItem="1" showOverflowItem="true" content="{oProductModel>/Category}"
+							class="sapUiSmallMargin">
+							<FlexBox alignItems="Center" justifyContent="Center">
+								<l:Grid defaultSpan="XL3 L3 M3 S6">
+									<l:content class="sapUiSmallMargin">
+										<HBox >
+											<VBox alignItems="Center">
+												<Avatar src="{oProductModel>icon}" displaySize="L" displayShape="Square" press="fnCategorySelect" backgroundColor="Transparent"/>
+												<Text textAlign="Center" text="{oProductModel>categoryname}" class="sapUiSmallMarginTop"/>
+											</VBox>
+										</HBox>
+									</l:content>
+								</l:Grid>
+							</FlexBox>
+						</HeaderContainer>
+					</VBox>
+					<VBox>
+						<Title class="sapUiSmallMarginBegin sapUiSmallMarginTop text" text="Top Sellers" level="H3"/>
+						<HeaderContainer scrollStep="500" id="container2" scrollStepByItem="1" showDividers="false" showOverflowItem="true"
+							content="{oProductModel>/Product}" class="sapUiSmallMargin">
+							<FlexBox alignItems="Center" justifyContent="Center">
+								<l:Grid defaultSpan="XL2 L2 M3 S6">
+									<l:content >
+										<HBox >
+											<VBox>
+												<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" press="press" backgroundImage="{oProductModel>image}"></GenericTile>
+												<VBox class="sapUiTinyMarginBegin tilecolor" alignItems="Center">
+													<Title text="{oProductModel>productname}" level="H3" class="sapUiTinyMarginTop"></Title>
+													<!--<Text text="{oProductModel>brandname}" class="sapUiTinyMarginTop" ></Text>-->
+													<Text text="{oProductModel>size}{oProductModel>unitshort}" class="sapUiTinyMarginTop"></Text>
+													<RatingIndicator id="RI_XS" maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="12px" tooltip="Rating Tooltip"/>
+													<Text text="MRP : RS {oProductModel>price}"></Text>
+													<Button icon="sap-icon://cart" text="Add to Cart" press="fnCart" class="sapUiTinyMarginTop"></Button>
+													<StepInput value="1" width="10%" min="0" visible="false" id="stepinput" class="sapUiTinyMarginTop"></StepInput>
+												</VBox>
+											</VBox>
+										</HBox>
+									</l:content>
+								</l:Grid>
+							</FlexBox>
+						</HeaderContainer>
+					</VBox>
+					<Carousel class="carousel" loop="true" height="auto" showPageIndicator="false">
+						<Image src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Pantry/July_2020/Pantry-storefront_PC-1500x300staysafer.jpg"
+							width="100%" height="auto" alt="Example picture of speakers"/>
+						<Image src="https://rukminim1.flixcart.com/flap/844/140/image/b3d7cbde7e9ee298.jpg?q=50" width="100%" height="auto"
+							alt="Example picture of USB flash drive"/>
+						<Image src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Pantry/May2020/COOP_Banners/HUL_DESKTOP_23RD_JULY.jpg" width="100%"
+							height="auto" alt="Example picture of spotlight"/>
+					</Carousel>
+					<VBox >
+						<Title class="sapUiSmallMarginBegin sapUiSmallMarginTop text" text="Top Sellers" level="H3"/>
+						<HeaderContainer scrollStep="500" id="container3" scrollStepByItem="1" showDividers="false" showOverflowItem="true"
+							content="{oProductModel>/Category}" class="sapUiSmallMargin">
+							<FlexBox alignItems="Center" justifyContent="Center">
+								<l:Grid defaultSpan="XL2 L2 M3 S6">
+									<l:content >
+										<HBox >
+											<VBox>
+												<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" press="press" backgroundImage="./images/orange-juice.png"></GenericTile>
+												<VBox class="sapUiTinyMarginBegin tilecolor" alignItems="Center">
+													<Title text="Lays" level="H3" class="sapUiTinyMarginTop"></Title>
+													<Text text="100g" class="sapUiTinyMarginTop"></Text>
+													<!--<Text text="Brand Name" class="sapUiTinyMarginTop" ></Text>-->
+													<RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="12px" tooltip="Rating Tooltip"/>
+													<Text text="MRP : RS 10"></Text>
+													<Button icon="sap-icon://cart" text="Add to Cart" press="fnCart" class="sapUiTinyMarginTop"></Button>
+													<StepInput value="1" width="10%" min="0" visible="false" id="stepinput2" class="sapUiTinyMarginTop"></StepInput>
+												</VBox>
+											</VBox>
+										</HBox>
+									</l:content>
+								</l:Grid>
+							</FlexBox>
+						</HeaderContainer>
+					</VBox>
+					<!--	<l:Grid 
+	defaultSpan="XL2 L2 M3 S6" class="sapUiSmallMargin">
+		<l:HorizontalLayout class="sapUiTinyMarginEnd">
+			
 				
-				<customHeader>
-					<tnt:ToolHeader>
-						<Button icon="sap-icon://globe" type="Transparent" press="fnOnZipCode">
-							<layoutData>
-								<OverflowToolbarLayoutData priority="NeverOverflow"/>
-							</layoutData>
-						</Button>
-						<ToolbarSpacer/>
-						<Button icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}"/>
-						<Button icon="sap-icon://bell" type="Transparent" tooltip="{i18n>Notification}"/>
-						<Button icon="sap-icon://person-placeholder" type="Transparent" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
-							<layoutData>
-								<OverflowToolbarLayoutData priority="NeverOverflow"/>
-							</layoutData>
-						</Button>
-						<Avatar visible="false"  displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu" id="accountMenu"/>
-					</tnt:ToolHeader>
-				</customHeader>
-				<MessageStrip id="idConfirmation" type="Success" showIcon="true"
-					text="Acccount created successfully!!!Login to Shop" class="sapUiMediumMarginBottom"
-					visible="false"></MessageStrip>
-				<VBox class="title">
-					<Title class="titleText" text="Essentiaries" level="H3"></Title>
-					<SearchField class="search_field" width="70%" id="searchField" placeholder="Search for Products,Brands and More" liveChange=".onSuggest"
-						enableSuggestions="true" search=".onSearch" suggest=".onSuggest"
-						suggestionItems="{ path: 'oTableModel>/ProductCollection', sorter: { path: 'Name' } }">
-						<SuggestionItem text="{oTableModel>Name}" description="{path:'oTableModel>Price'} {path:'oTableModel>CurrencyCode'}"
-							key="{oTableModel>ProductId}"/>
-						<layoutData>
-							<OverflowToolbarLayoutData priority="NeverOverflow"/>
-						</layoutData>
-					</SearchField>
-				</VBox>
-				<VBox class="sapUiLargeMargin">
-					<Title text="Shop by categories" level="H3"/>
-					<HeaderContainer scrollStep="500" id="container1" scrollStepByItem="1" showOverflowItem="true" content="{oProductModel>/Category}"
-						class="sapUiSmallMargin">
-						<FlexBox alignItems="Center" justifyContent="Center">
-							<l:Grid defaultSpan="XL3 L3 M3 S6">
-								<l:content class="sapUiSmallMargin">
-									<HBox >
-										<VBox alignItems="Center">
-											<Avatar src="{oProductModel>icon}" displaySize="L" displayShape="Square" press="handleResponsivePopoverPress" backgroundColor="Transparent"/>
-											<Text textAlign="Center" text="{oProductModel>categoryname}" class="sapUiSmallMarginTop"/>
-										</VBox>
-									</HBox>
-								</l:content>
-							</l:Grid>
-						</FlexBox>
-					</HeaderContainer>
-				</VBox>
-		
+		</l:HorizontalLayout>
+	</l:Grid>-->
+					<l:VerticalLayout id="containerLayout" width="100%" class="footer">
+						<l:BlockLayout id="BlockLayout">
+							<l:BlockLayoutRow>
+								<l:BlockLayoutCell >
+									<Title text="Category"/>
+									<SelectList items="{oProductModel>/Category}">
+										<core:Item key="{oProductModel>categoryname}" text="{oProductModel>categoryname}"/>
+									</SelectList>
+								</l:BlockLayoutCell>
+								<l:BlockLayoutCell>
+									<Title text="Essentiaries"/>
+									<SelectList>
+										<core:Item key="About us" text="About us"/>
+										<core:Item key="FAQ" text="FAQ"/>
+										<core:Item key="Privacy Policy" text="Privacy Policy"/>
+											<core:Item key="Careers" text="Careers" />
+										<core:Item key="Terms and Conditions" text="Terms and Conditions"/>
+									</SelectList>
+								</l:BlockLayoutCell>
+								<l:BlockLayoutCell>
+							<Title text="Contact Us"/>
+								<HBox class="sapUiTinyMargin">	<core:Icon size="1rem"  src="sap-icon://email"/>
+									<Link text="info@essentiaries.com"/></HBox>	
+										<HBox class="sapUiTinyMarginBegin">	<core:Icon  size="1rem"  src="sap-icon://call"/>
+									<Link text="1800 000 1450"/></HBox>	
+								
+								</l:BlockLayoutCell>
+								<l:BlockLayoutCell>
+									<Title text="Newsletter"/>
+									<HBox><Input placeholder="email"/>
+									<Button icon="sap-icon://paper-plane" /></HBox>	
+								</l:BlockLayoutCell>
+							</l:BlockLayoutRow>
+						</l:BlockLayout>
+					</l:VerticalLayout>
 				</Page>
 			</pages>
 		</App>

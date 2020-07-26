@@ -1,0 +1,50 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.inkathon.Grocery.controller.userDashBoard"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tnt="sap.tnt" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.f"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<App>
+		<pages>
+			<Page title="Title" showNavButton="true" navButtonPress="onNavBack">
+				<customHeader class="ToolbarColor">
+						<tnt:ToolHeader >
+							<ToolbarSpacer/>
+							<Title text="{i18n>ShopName}">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Title>
+							<ToolbarSpacer/>
+							<!--<Button icon="sap-icon://log" tooltip="Log out" type="Transparent" press="onNavBack" />-->
+						</tnt:ToolHeader>
+					</customHeader>
+					<VBox class=" sapUiTinyMargin">
+						<Breadcrumbs currentLocationText="user Dashboard" class="sapUiSmallMargin">
+							<Link press="onPress" text="Home"/>
+							<!--<Link press="onPress" text="Category"/>-->
+						</Breadcrumbs>
+					</VBox>
+					<VBox class=" sapUiTinyMargin" alignItems="Center">
+						<core:Icon class="sapUiTinyMarginTop" size="3rem" src="sap-icon://customer"/>
+						<Title text="Welcome user" class="formText"></Title>
+					</VBox>
+					<SplitApp id="SplitAppDemo">
+						<detailPages>
+							<Page title="Welcome "></Page>
+						</detailPages>
+						<masterPages>
+							<Page id="master" title="Account" backgroundDesign="List" class="sapUiStdPage sapUiSmallMarginBegin">
+								<List>
+									<items>
+										<StandardListItem title="Overview" icon="sap-icon://rhombus-milestone-2" />
+										<StandardListItem icon="sap-icon://shipping-status" title="My Orders" type="Navigation" press="fnOnPressGoToMaster"/>
+										<StandardListItem icon="sap-icon://person-placeholder" title="My Profile"/>
+										<StandardListItem title="My Wallet" icon="sap-icon://wallet" />
+										<StandardListItem title="Logout" icon="sap-icon://log"/>
+									</items>
+								</List>
+							</Page>
+						</masterPages>
+					</SplitApp>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
