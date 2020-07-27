@@ -36,6 +36,8 @@ overflow: hidden;
 
 .bgtop{
 	background-image:url("../images/top.svg");
+	    background-repeat: no-repeat;
+	    	background-size:  cover;
 }
 .ToolbarColor{
 	background-color: white !important;
@@ -158,4 +160,54 @@ background-color: #cfff9e;
 }
 .footer{
 	background-color:#ffffff !important;
+}
+
+.sapMDialog .sapMDialogScrollCont>* {
+   
+    background-image:linear-gradient(80deg, #f17979 0%, #d4c8be 100%)
+}
+
+.sapMDialog.sapMPopup-CTX> header .sapMHeader-CTX, .sapMDialog.sapMPopup-CTX> header .sapMSubHeader-CTX {
+   
+   background-color: #6e1f1f;
+     
+}
+
+.headerbg{
+	background-color: #6e1f1f;
+
+
+}
+
+
+
+
+.sapMBar .sapMBarRight.sapMBarContainer>*:last-child, .sapMBar .sapMBarLeft.sapMBarContainer>*:last-child, .sapMBar .sapMBarMiddle .sapMBarContainer>*:last-child {
+    
+    color: ghostwhite;
+}
+.headertitle{
+	color:ghostwhite;
+}
+
+
+.header.sapTntToolHeader.sapMTB {
+	
+    background-color:#6e1f1f;
+   
+}
+
+
+.header.sapTntToolHeader .sapMText, .sapTntToolHeader .sapMTitle, .sapTntToolHeader .sapMLabel {
+    color: #de8941;
+}
+.headertext{
+	 color: #de8941;
+}
+.sapMLnk:not(.sapMLnkDsbl) {
+    text-shadow: none;
+    color:white;
+}
+.sapMLnk:visited {
+    color: white;
 }

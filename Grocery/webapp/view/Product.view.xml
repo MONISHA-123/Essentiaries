@@ -1,5 +1,5 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.inkathon.Grocery.controller.Product"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:f="sap.f" >
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:f="sap.f" 	xmlns:grid="sap.ui.layout.cssgrid" >
 	<App>
 		<pages>
 			<Page title="Title">
@@ -53,14 +53,16 @@
 						<f:GridList id="gridList"
 					
 						items="{oProductModel>/Product}">
-				<f:GridListItem>
+			 <f:GridListItem class="sapUiSmallMarginTop">
+
 					<VBox height="100%"  alignItems="Center">
 						
 							<layoutData>
-								<FlexItemData growFactor="1" shrinkFactor="0" /><!-- Don't shrink below minimum size. Fill space if available. -->
+								<FlexItemData growFactor="1" shrinkFactor="0"  /><!-- Don't shrink below minimum size. Fill space if available. -->
 							</layoutData>
 								
 												<GenericTile class=" tileLayout" press="press" backgroundImage="{oProductModel>image}"></GenericTile>
+											
 												<VBox   alignItems="Center">
 													<Title text="{oProductModel>productname}" level="H3" class="sapUiTinyMarginTop"></Title>
 													<!--<Text text="{oProductModel>brandname}" class="sapUiTinyMarginTop" ></Text>-->

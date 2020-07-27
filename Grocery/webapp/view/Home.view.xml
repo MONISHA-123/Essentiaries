@@ -6,7 +6,7 @@
 			<pages>
 				<Page id="page"  >
 					<customHeader>
-						<tnt:ToolHeader class="headertitle">
+						<tnt:ToolHeader class="header">
 							<!--<Button icon="sap-icon://globe"  press="fnOnZipCode">
 								<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
@@ -52,7 +52,7 @@
 							</layoutData>
 						</SearchField>-->
 					</VBox>
-					<VBox class="sapUiLargeMarginTop">
+					<VBox class="sapUiLargeMarginTop bgtop">
 						<Title text="Shop by categories" level="H3"/>
 						<HeaderContainer scrollStep="500" id="container1" scrollStepByItem="1" showOverflowItem="true" content="{oProductModel>/Category}"
 							class="sapUiSmallMargin">
