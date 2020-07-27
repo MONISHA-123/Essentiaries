@@ -4,35 +4,44 @@
 	<Shell id="shell">
 		<App id="app">
 			<pages>
-				<Page id="page" title="{i18n>title}">
+				<Page id="page"  >
 					<customHeader>
-						<tnt:ToolHeader class="ToolbarColor">
-							<Button icon="sap-icon://globe" type="Transparent" press="fnOnZipCode">
+						<tnt:ToolHeader class="headertitle">
+							<!--<Button icon="sap-icon://globe"  press="fnOnZipCode">
 								<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>
-							</Button>
-							<ComboBox>
+							</Button>-->
+							<SearchField width="20%">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</SearchField>
+						<!--	<ComboBox>
 									<core:ListItem key="Mumbai" text="Mumbai" icon="sap-icon://map"/>
 									<core:ListItem key="Kolkata" text="Kolkata" icon="sap-icon://map"/>
 									<core:ListItem key="Chennai" text="Chennai" icon="sap-icon://map"/>
 									<core:ListItem key="Bangalore" text="Bangalore" icon="sap-icon://map"/>
-							</ComboBox>
+							</ComboBox>-->
 							<ToolbarSpacer/>
-							<Button icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}"/>
-							<Button icon="sap-icon://bell" type="Transparent" tooltip="{i18n>Notification}"/>
-							<Button icon="sap-icon://person-placeholder" type="Transparent" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
-								<layoutData>
+							<Title  text="Essentiaries"></Title>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://cart"  tooltip="{i18n>Cart}"/>
+							<Button icon="sap-icon://bell"  tooltip="{i18n>Notification}"/>
+							<Button icon="sap-icon://person-placeholder" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
+								<!--<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
-								</layoutData>
+								</layoutData>-->
 							</Button>
 							<Avatar visible="false" displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu" id="accountMenu"/>
 						</tnt:ToolHeader>
 					</customHeader>
 					<MessageStrip id="idConfirmation" type="Success" showIcon="true" text="Acccount created successfully!!!Login to Shop"
 						class="sapUiMediumMarginBottom" visible="false"></MessageStrip>
-					<VBox class="title " alignItems="Center">
-						<Title class="titleText sapUiLargeMargin" text="Essentiaries" level="H3"></Title>
+						<VBox class="bgtop"></VBox>
+						<VBox class="bgImage">
+					<VBox class="title " >
+					<!--	<Title class="titleText sapUiLargeMargin" text="Essentiaries" level="H3"></Title>
 						<SearchField class="search_field" width="80%" id="searchField" placeholder="Search for Products,Brands and More" liveChange=".onSuggest"
 							enableSuggestions="true" search=".onSearch" suggest=".onSuggest"
 							suggestionItems="{ path: 'oTableModel>/ProductCollection', sorter: { path: 'Name' } }">
@@ -41,9 +50,9 @@
 							<layoutData>
 								<OverflowToolbarLayoutData priority="NeverOverflow"/>
 							</layoutData>
-						</SearchField>
+						</SearchField>-->
 					</VBox>
-					<VBox class="sapUiLargeMargin">
+					<VBox class="sapUiLargeMarginTop">
 						<Title text="Shop by categories" level="H3"/>
 						<HeaderContainer scrollStep="500" id="container1" scrollStepByItem="1" showOverflowItem="true" content="{oProductModel>/Category}"
 							class="sapUiSmallMargin">
@@ -60,6 +69,7 @@
 								</l:Grid>
 							</FlexBox>
 						</HeaderContainer>
+					</VBox>
 					</VBox>
 					<VBox>
 						<Title class="sapUiSmallMarginBegin sapUiSmallMarginTop text" text="Top Sellers" level="H3"/>
@@ -89,7 +99,7 @@
 					</VBox>
 					<Carousel class="carousel" loop="true" height="auto" showPageIndicator="false">
 						<Image src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Pantry/July_2020/Pantry-storefront_PC-1500x300staysafer.jpg"
-							width="100%" height="auto" alt="Example picture of speakers"/>
+							width="100%" height="auto" alt="Example picture of speakers" />
 						<Image src="https://rukminim1.flixcart.com/flap/844/140/image/b3d7cbde7e9ee298.jpg?q=50" width="100%" height="auto"
 							alt="Example picture of USB flash drive"/>
 						<Image src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Pantry/May2020/COOP_Banners/HUL_DESKTOP_23RD_JULY.jpg" width="100%"
