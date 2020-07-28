@@ -246,6 +246,10 @@ background-color:white;
 .sapMInputBaseIconContainer .sapMInputBaseIcon:hover {
     background-color: #6E1F1F;
 }
+/*........stepInput....*/
+.stepMargin{
+	margin-left: 1.8rem
+}
 /*................tilte in fragments....*/
 .loginTitle {
 	 color: #ffffff;

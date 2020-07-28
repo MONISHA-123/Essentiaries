@@ -27,10 +27,45 @@ sap.ui.define([
 		_onRouteMatched: function (oEvent) {
 			
 			this.id = oEvent.getParameter("arguments").CategoryId;
+				this.GETMethod_CATEBYPROD();
 		/*	this.GETMethod_PROD();
 				this.GETMethod_CATE();
 			this.GETMethod_BRAND();*/
 		},
+			GETMethod_CATEBYPROD: function () {
+			var that = this;
+
+			var sUrl = "/AdminModule/api/productbycategory/"+this.id;
+			$.ajax({
+				url: sUrl,
+				data: null,
+				async: true,
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				headers: {
+					"x-CSRF-Token": "fetch"
+				},
+				error: function (err) {
+					MessageToast.show("Category Fetch Destination Failed");
+				},
+				success: function (data, status, xhr) {
+
+					MessageToast.show("Succussfully consumed destination from CF!");
+					that.cateCount = data.length;
+
+					that.getOwnerComponent().getModel("oProductModel").setProperty("/CategoryByProduct", data);
+
+				},
+				type: "GET"
+			}).always(function (data, status, xhr) {
+				that.token = xhr.getResponseHeader("x-CSRF-Token");
+
+			});
+		},
+		
+		
+		
+		
 	fnFilter: function () {
 			if (!this._oDialog) {
 

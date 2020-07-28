@@ -34,6 +34,7 @@ sap.ui.define([
 			this.getView().setModel(oEmptyModel, "oEmptyModel");
 			this.GETMethod_CATE();
 			this.GETMethod_Prod();
+				
 		},
 			GETMethod_Prod: function () {
 			var that = this;
@@ -99,7 +100,17 @@ sap.ui.define([
 		getRouter: function () {
 			return UIComponent.getRouterFor(this);
 		},
+		/*onAfterRendering: function(){
+			var data=this.getOwnerComponent().getModel("oProductModel").getProperty("/LoginUser");
+			if(data!=undefined){
+					var sInitial = (data.fname).charAt(0) + (data.lname).charAt(0);
 
+								this.getView().byId("accountMenu").setInitials(sInitial);
+								this .getView().byId("accountMenu").setVisible(true);
+
+							this.getView().byId("signIn").setVisible(false);
+			}
+		},*/
 		//fragment for zip code
 		fnOnZipCode: function (oEvent) {
 			var oButton = oEvent.getSource();
@@ -203,31 +214,19 @@ sap.ui.define([
 		},
 		//fragment for reset password
 		fnOnResetPass: function () {
-
 			this._oDialog.close();
-
 			this._oDialog.destroy();
-
 			this._oDialog = null;
-
 			if (!this._oDialog) {
-
 				this._oDialog = sap.ui.xmlfragment("idForgetPass", "com.inkathon.Grocery.fragments.ResetPassword", this);
-
 			}
-
 			this.getView().addDependent(this._oDialog);
-
 			Fragment.byId("idForgetPass", "fogetPass").setVisible(true);
-
 			Fragment.byId("idForgetPass", "forgetPassOTP").setVisible(false);
-
 			Fragment.byId("idForgetPass", "resetPassPage").setVisible(false);
-
-			// Fragment.byId("idForgetPass", "navBack").setPress(this.fnOnUser); 
-
+			Fragment.byId("idForgetPass", "NavBackFP").setVisible(false); 
+			Fragment.byId("idForgetPass", "NavBack").setVisible(true); 
 			this._oDialog.open();
-
 		},
 
 		fnforgetPassOTP: function () {
@@ -280,10 +279,9 @@ sap.ui.define([
 
 							Fragment.byId("idForgetPass", "resetPassPage").setVisible(false);
 
-							// Fragment.byId("idForgetPass", "NavBack").setVisible(false);
-
-							// Fragment.byId("idForgetPass", "info").setText("We've sent an OTP to the email . Please enter it below to complete verification.");
-							// Fragment.byId("idForgetPass", "resend").setEnabled(false);
+						 Fragment.byId("idForgetPass", "NavBack").setVisible(false);
+						Fragment.byId("idForgetPass", "NavBackFP").setVisible(true);
+						
 							that._oDialog.open();
 
 							var time = Fragment.byId("idForgetPass", "timer");
@@ -337,28 +335,19 @@ sap.ui.define([
 					temp += this.otp[i];
 				}
 			if (this.otp) {
-			
 			if (this.forgotOTP === parseInt(temp, 10)) {
 			this._oDialog.close();
-
 			this._oDialog.destroy();
-
 			this._oDialog = null;
-
 			if (!this._oDialog) {
-
 				this._oDialog = sap.ui.xmlfragment("ForgetPass", "com.inkathon.Grocery.fragments.ResetPassword", this);
-
 			}
-
 			this.getView().addDependent(this._oDialog);
-
 			Fragment.byId("ForgetPass", "fogetPass").setVisible(false);
-
 			Fragment.byId("ForgetPass", "forgetPassOTP").setVisible(false);
-
 			Fragment.byId("ForgetPass", "resetPassPage").setVisible(true);
-			 Fragment.byId("idForgetPass", "navBack").setVisible(false);
+			Fragment.byId("ForgetPass", "NavBack").setVisible(false);
+			Fragment.byId("ForgetPass", "NavBackFP").setVisible(false);
 			this._oDialog.open();
 				} else {
 				MessageToast.show("Incorrect OTP");
@@ -832,9 +821,9 @@ sap.ui.define([
 		},
 		fnCart :function(oEvent){
 			MessageToast.show("Product Added To Cart ");
-			oEvent.getSource().getParent().getItems()[4].setVisible(false);
-			oEvent.getSource().getParent().getItems()[5].setVisible(true);
-			this.fnOnAddToCart();
+			oEvent.getSource().getParent().getItems()[0].setVisible(false);
+			oEvent.getSource().getParent().getItems()[1].setVisible(true);
+			 this.fnOnAddToCart();
 		},
 		fnCategorySelect:function(oEvent){
 		var sPath=oEvent.getSource().getBindingContext("oProductModel").getPath();

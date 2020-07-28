@@ -92,8 +92,11 @@
 													<Text text="{oProductModel>size}{oProductModel>unitshort}" class="sapUiTinyMarginTop"></Text>
 													<RatingIndicator id="RI_XS" maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="12px" tooltip="Rating Tooltip"/>
 													<Text text="MRP : RS {oProductModel>price}"></Text>
+													<VBox>
 													<Button icon="sap-icon://cart" text="Add to Cart" press="fnCart" class="sapUiTinyMarginTop buttonBg"></Button>
-													<StepInput value="1" width="10%" min="0" visible="false" id="stepinput" class="sapUiTinyMarginTop"></StepInput>
+													<StepInput value="1"  width="10%" min="0" visible="false" id="stepinput" class="sapUiTinyMarginTop stepMargin"></StepInput>
+													</VBox>
+													
 												</VBox>
 											</VBox>
 										</HBox>

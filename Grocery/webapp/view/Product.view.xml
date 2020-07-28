@@ -52,7 +52,7 @@
 						<!--<Link press="onPress" text="Category"/>-->
 					</Breadcrumbs>
 					<OverflowToolbar>
-						<Text text="Product"/>
+						<Text text="{oProductModel>/CategoryByProduct/0/categoryname}"/>
 						<ToolbarSpacer/>
 						<ComboBox >
 							<core:Item text="Popularity" key="Popularity"/>
@@ -64,7 +64,7 @@
 					</OverflowToolbar>
 						<f:GridList id="gridList"
 					
-						items="{oProductModel>/Product}">
+						items="{oProductModel>/CategoryByProduct}">
 			 <f:GridListItem class="sapUiSmallMarginTop">
 
 					<VBox height="100%"  alignItems="Center">

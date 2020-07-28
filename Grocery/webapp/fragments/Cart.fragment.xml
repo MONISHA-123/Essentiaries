@@ -12,7 +12,7 @@
 				<ToolbarSpacer/>
 				<Button
 					
-					text="Proceed to pay"
+					text="Proceed to cart"
 					press="fnCartPage" />
 			</OverflowToolbar>
 		</footer>
