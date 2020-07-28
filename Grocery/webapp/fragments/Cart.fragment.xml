@@ -11,7 +11,7 @@
 			<OverflowToolbar>
 				<ToolbarSpacer/>
 				<Button
-					
+				
 					text="Proceed to cart"
 					press="fnCartPage" />
 			</OverflowToolbar>

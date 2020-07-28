@@ -24,9 +24,9 @@
 							<ToolbarSpacer/>
 							<Title  text="Essentiaries"></Title>
 							<ToolbarSpacer/>
-							<Button icon="sap-icon://cart"  tooltip="{i18n>Cart}"/>
-							<Button icon="sap-icon://bell"  tooltip="{i18n>Notification}"/>
-							<Button icon="sap-icon://person-placeholder" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
+							<Button class="ToolbarIcon" icon="sap-icon://cart"  tooltip="{i18n>Cart}"/>
+							<Button class="ToolbarIcon" icon="sap-icon://bell"  tooltip="{i18n>Notification}"/>
+							<Button class="ToolbarIcon" icon="sap-icon://person-placeholder" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
 								<!--<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>-->

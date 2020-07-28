@@ -31,9 +31,11 @@ sap.ui.define([
 			oEmptyModel.setProperty("/ForgotPassword", {
 				"email": ""
 			});
+			oEmptyModel.setProperty("/Currency", {"currency":"₹"});
 			this.getView().setModel(oEmptyModel, "oEmptyModel");
 			this.GETMethod_CATE();
 			this.GETMethod_Prod();
+			
 				
 		},
 			GETMethod_Prod: function () {
@@ -58,6 +60,7 @@ sap.ui.define([
 					that.cateCount = data.length;
 
 					that.getOwnerComponent().getModel("oProductModel").setProperty("/Product", data);
+					
 					//console.log(data);
 
 				},
@@ -831,6 +834,55 @@ sap.ui.define([
 		this.getRouter().navTo("Product", {
 				CategoryId: id
 			});
+		},
+	onSearch: function (event) {
+			var oItem = event.getParameter("searchField");
+			if (oItem) {
+				MessageToast.show("Search for: " + oItem.getText());
+			} else {
+				MessageToast.show("Search is fired!");
+			}
+		},
+
+		onSuggest: function (event) {
+			this.oSF = this.getView().byId("searchField");
+			var sValue = event.getParameter("suggestValue"),
+				aFilters = [];
+		if (sValue) {
+				aFilters = [
+					new Filter([
+						new Filter("productid", function (sDes) {
+							return (sDes || "").toUpperCase().indexOf(sValue.toUpperCase()) > -1;
+						}),
+						new Filter("productname", function (sText) {
+							return (sText || "").toUpperCase().indexOf(sValue.toUpperCase()) > -1;
+						}),
+							new Filter("categoryname", function (sText) {
+							return (sText || "").toUpperCase().indexOf(sValue.toUpperCase()) > -1;
+						}),
+							new Filter("brandname", function (sText) {
+							return (sText || "").toUpperCase().indexOf(sValue.toUpperCase()) > -1;
+						})
+					], false)
+				];
+			}
+		
+			this.oSF.getBinding("suggestionItems").filter(aFilters);
+			this.oSF.suggest();
+			
+/*			var aFilter = [];
+
+			var sQuery = this.getView().byId("searchField").getValue();
+			if (sQuery) {
+				aFilter.push(new Filter("productname", FilterOperator.Contains, sQuery));
+			}
+
+			// filter binding
+			var oList = this.getView().byId("searchField");
+			var oBinding = oList.getBinding("suggestionItems");
+			oBinding.filter(aFilter);
+			//oBinding.suggest();
+		*/
 		}
 	});
 });

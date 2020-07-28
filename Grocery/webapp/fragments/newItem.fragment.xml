@@ -7,7 +7,7 @@
 					<Title text="{i18n>Company Name}"/>
 				</contentMiddle>
 				<contentRight>
-					<Button icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
+					<Button class="ToolbarIcon" icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
 				</contentRight>
 			</Bar>
 		</customHeader>
@@ -34,12 +34,12 @@
 							<f:FormElement label="{i18n>CategoryID}" id="NewCateID">
 								<f:fields>
 									<Input value="{oEmptyModel>/Category/categoryid}"/>
-									<Button class="sapUiSmallMarginTop" text="{i18n>Save}" id="cateSaveBt" press="fnOnNewCateSave">
+									<Button class="sapUiSmallMarginTop frgamentbtn" text="{i18n>Save}" id="cateSaveBt" press="fnOnNewCateSave">
 										<layoutData>
 											<l:GridData span="XL6 L6 M6 S6"/>
 										</layoutData>
 									</Button>
-									<Button class="sapUiSmallMarginTop" text="{i18n>Cancel}" press="fnOnNewCateCancel">
+									<Button class="sapUiSmallMarginTop frgamentbtn" text="{i18n>Cancel}" press="fnOnNewCateCancel">
 										<layoutData>
 											<l:GridData span="XL6 L6 M6 S6"/>
 										</layoutData>
@@ -69,12 +69,12 @@
 								<f:FormElement label="{i18n>CategoryID}">
 									<f:fields>
 										<Input value="{oEmptyModel>/Brand/categoryid}" editable="false"/>
-										<Button class="sapUiSmallMarginTop" text="{i18n>Save}" id="BrandSaveBt" press="fnOnNewBrandSave">
+										<Button class="sapUiSmallMarginTop frgamentbtn" text="{i18n>Save}" id="BrandSaveBt" press="fnOnNewBrandSave">
 											<layoutData>
 												<l:GridData span="XL6 L6 M6 S6"/>
 											</layoutData>
 										</Button>
-										<Button class="sapUiSmallMarginTop" text="{i18n>Cancel}" press="fnOnCancel">
+										<Button class="sapUiSmallMarginTop frgamentbtn" text="{i18n>Cancel}" press="fnOnCancel">
 											<layoutData>
 												<l:GridData span="XL6 L6 M6 S6"/>
 											</layoutData>
@@ -93,12 +93,12 @@
 								<f:FormElement label="{i18n>UnitID}">
 									<f:fields>
 										<Input/>
-										<Button class="sapUiSmallMarginTop" text="{i18n>Save}" >
+										<Button class="sapUiSmallMarginTop frgamentbtn" text="{i18n>Save}" >
 											<layoutData>
 												<l:GridData span="XL5 L5 M5 S5"/>
 											</layoutData>
 										</Button>
-										<Button class="sapUiSmallMarginTop" text="{i18n>Cancel}" >
+										<Button class="sapUiSmallMarginTop frgamentbtn" text="{i18n>Cancel}" >
 											<layoutData>
 												<l:GridData span="XL5 L5 M5 S5"/>
 											</layoutData>

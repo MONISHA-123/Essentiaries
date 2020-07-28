@@ -6,7 +6,7 @@
 					<Title text="CompanyName"/>
 				</contentMiddle>
 				<contentRight>
-					<Button icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
+					<Button class="ToolbarIcon" icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
 				</contentRight>
 			</Bar>
 		</customHeader>
@@ -44,8 +44,8 @@
 									</f:formContainers>
 								</f:Form>
 								<buttons>
-			<Button text="go" icon="sap-icon://filter" press="fnBrandFilter"></Button>
-			<Button text="{i18n>Cancel}" press="fnOnCancel"></Button>
+			<Button class="frgamentbtn" text="go" icon="sap-icon://filter" press="fnBrandFilter"></Button>
+			<Button  class="frgamentbtn" text="{i18n>Cancel}" press="fnOnCancel"></Button>
 		
 		</buttons>
 	</Dialog>

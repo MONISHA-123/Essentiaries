@@ -6,7 +6,7 @@
 					<Title text="Add a new product"/>
 				</contentMiddle>
 				<contentRight>
-					<Button icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
+					<Button class="ToolbarIcon" icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
 				</contentRight>
 			</Bar>
 		</customHeader>
@@ -182,9 +182,9 @@
 			</IconTabBar>
 		</content>
 		<buttons>
-			<Button text="{i18n>Previous}" press="fnOnPrevious" id="prevID" visible="false"></Button>
-			<Button text="{i18n>Next}" press="fnOnNext" id="nextID"></Button>
-			<Button text="{i18n>Save}" id="saveID" visible="false" press="fnNewProdSave"></Button>
+			<Button class="ToolbarIcon" text="{i18n>Previous}" press="fnOnPrevious" id="prevID" visible="false"></Button>
+			<Button  class="ToolbarIcon" text="{i18n>Next}" press="fnOnNext" id="nextID"></Button>
+			<Button class="ToolbarIcon" text="{i18n>Save}" id="saveID" visible="false" press="fnNewProdSave"></Button>
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

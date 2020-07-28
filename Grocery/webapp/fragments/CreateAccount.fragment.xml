@@ -3,14 +3,14 @@
 		<customHeader>
 			<Bar>
 				<contentLeft>
-					<Button icon="sap-icon://nav-back" press="fnOnUser"/>
+					<Button class="ToolbarIcon" icon="sap-icon://nav-back" press="fnOnUser"/>
 				</contentLeft>
 				<contentMiddle>
 					<Image src="./Images/Logo.jpg"></Image>
 					<Title text="{i18n>ShopName}"/>
 				</contentMiddle>
 				<contentRight>
-					<Button icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
+					<Button class="ToolbarIcon" icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
 				</contentRight>
 			</Bar>
 		</customHeader>
@@ -19,23 +19,23 @@
 				<VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
 					<Title class="sapUiTinyMargin loginTitle" text="{i18n>signUp}"></Title>
 					<HBox>
-						<core:Icon color="white" class="sapUiTinyMarginTop sapUiTinyMarginBegin" size="1.5rem"  src="sap-icon://person-placeholder"/>
+						<core:Icon color="black" class="sapUiTinyMarginTop sapUiTinyMarginBegin" size="1.5rem"  src="sap-icon://person-placeholder"/>
 						<Input class="sapUiTinyMarginBegin" width="7.5rem" placeholder="{i18n>FName}" value="{oEmptyModel>/Registration/fname}"
 							liveChange="fnOnFNameChange" id="idFName"></Input>
 						<Input class="sapUiTinyMarginBegin" width="7.5rem" placeholder="{i18n>Lname}" value="{oEmptyModel>/Registration/lname}"
 							liveChange="fnOnLNameChange" id="idLName"></Input>
 					</HBox>
-					<HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginEnd"><core:Icon color="white" class="sapUiTinyMarginTop" size="1.5rem"  src="sap-icon://email"/>
+					<HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginEnd"><core:Icon color="black" class="sapUiTinyMarginTop" size="1.5rem"  src="sap-icon://email"/>
 						<Input class="sapUiTinyMarginBegin" width="15.4rem" type="Email" placeholder="{i18n>Email}" value="{oEmptyModel>/Registration/email}"
 							change="fnOnEmailChange" liveChange="fnOnEmailLiveChange" id="idEmail"></Input>
 					</HBox>
-					<HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginEnd"><core:Icon color="white" class="sapUiTinyMarginTop" size="1.5rem"  src="sap-icon://contacts"/>
+					<HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginEnd"><core:Icon color="black" class="sapUiTinyMarginTop" size="1.5rem"  src="sap-icon://contacts"/>
 						<Input class="sapUiTinyMarginBegin" width="15.4rem" placeholder="{i18n>mobile}" value="{oEmptyModel>/Registration/phoneno}" type="Number"/>
 					</HBox>
-					<HBox class="sapUiTinyMarginTop"><core:Icon color="white" src="sap-icon://key" class="sapUiTinyMarginTop" size="1.5rem" />
+					<HBox class="sapUiTinyMarginTop"><core:Icon color="black" src="sap-icon://key" class="sapUiTinyMarginTop" size="1.5rem" />
 						<Input width="12.5rem" class="sapUiTinyMarginBegin" placeholder="{i18n>passcode}" type="Password" id="idPwd"
 							value="{oEmptyModel>/Registration/password}" change="fnOnPwdChange" liveChange="fnOnPwdLiveChange"/>
-						<Button class="sapUiTinyMarginBegin" icon="sap-icon://show" id="idShowPwd" press="fnOnShowPassword"/>
+						<Button class="sapUiTinyMarginBegin frgamentbtn" icon="sap-icon://show" id="idShowPwd" press="fnOnShowPassword"/>
 					</HBox>
 					<!--    <Button icon="sap-icon://show"  id="idShowPass" type="Transparent" press="fnOnShowPassword"/> 
 
@@ -50,7 +50,7 @@
 					</HBox>
 				</VBox>
 				<VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
-					<Button text="{i18n>Register}" press="fnOnSubmit"></Button>
+					<Button  class="frgamentbtn" text="{i18n>Register}" press="fnOnSubmit"></Button>
 				</VBox>
 			</VBox>
 		</VBox>

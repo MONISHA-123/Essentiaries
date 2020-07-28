@@ -772,6 +772,7 @@ sap.ui.define([
 		},
 		onRefreshBrandTable: function () {
 			this.byId("brandtable").getBinding("items").filter();
+				this.byId("categorytable").getBinding("items").filter();
 
 		},
 		onSearchID: function (event) {
@@ -804,6 +805,20 @@ sap.ui.define([
 			oBinding.filter(aFilter);
 
 		},
+		onSearchCategory: function (event) {
+			var aFilter = [];
+
+			var sQuery = this.getView().byId("category").getValue();
+			if (sQuery) {
+				aFilter.push(new Filter("categoryname", FilterOperator.Contains, sQuery));
+			}
+
+			// filter binding
+			var oList = this.getView().byId("categorytable");
+			var oBinding = oList.getBinding("items");
+			oBinding.filter(aFilter);
+
+		}, 
 		fnBrandDelConfirm: function (oEvent) {
 			var that = this;
 			var id = oEvent.getSource().getParent().getParent().getCells()[0].getValue();

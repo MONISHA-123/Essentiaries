@@ -220,31 +220,31 @@ background-color:white;
 }
 /*....................Button ........*/
 .sapMBtnInner {
-	background-color:#6E1F1F!important;
-	color:white !important;
-	border: .0625rem solid #560606 !important;
+background-color: #fce66d!important;
+    color: #000000 !important;
+    border: .0625rem solid #171717 !important;
 }
 /*....................Icons in Button ........*/
 .sapMBtnIcon{
-	color:white !important;
+	color:black !important;
 }
 /*....................Step Input background ........*/
 .sapMInputBaseContentWrapper {
     border: .0625rem solid #000000 !important;
-    background:#6E1F1F !important;
+    background:white !important;
     border-radius: .3rem !important;
    
 }
 /*....................Step Input Value .......*/
 .sapMInputBaseInner {
-    color: #ffffff;
+    color: black;
 }
 /*....................Step Input + and - Button ........*/
 .sapMInputBaseIconContainer .sapMInputBaseIcon {
-    color: #ffffff;
+    color: black;
 }
 .sapMInputBaseIconContainer .sapMInputBaseIcon:hover {
-    background-color: #6E1F1F;
+    background-color: black;
 }
 /*........stepInput....*/
 .stepMargin{
@@ -256,4 +256,54 @@ background-color:white;
 }
 .sapMPopover .sapMIBar.sapMHeader-CTX {
     background-color:#6E1F1F;
+}
+
+.textstrike{
+	text-decoration: line-through;
+}
+.ToolbarIcon .sapMBtnInner{
+	background-color: #6e1f1f !important;
+    color: #6e1f1f !important;
+    border: .0625rem solid #6e1f1f !important;
+	
+}
+.ToolbarIcon .sapMBtnIcon{
+	color:white !important;
+} 
+
+/* backgroung for filters*/
+.bgcoloritems.sapMSelectList{
+	margin: revert;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.brandfilter{
+	margin: revert;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background:white;
+}
+
+/* for sliders in filter*/
+.sapMRangeSlider.sapMSlider .sapMSliderInner:not(.sapMSliderInnerDisabled):hover>.sapMSliderHandle {
+    background-color: rgba(235,245,254,0.25);
+    border-color: #6e1f1f;
+	
+}
+    
+.sapMSliderProgress {
+    background: #6e1f1f;
+   
+}
+.sapMSliderInner {
+    background: #ffffff;
+}
+.sapMRangeSlider.sapMSlider .sapMSliderLabels .sapMSliderRangeLabel {
+   
+    color: #000000;
+}
+
+.frgamentbtn.sapMBtnInner {
+	background-color:#db9d9d !important;
+
 }

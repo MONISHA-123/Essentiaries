@@ -7,7 +7,14 @@
 				<Page id="page"  >
 					<customHeader>
 						<tnt:ToolHeader class="header">
-							<SearchField width="15%">
+							<SearchField  width="10%" id="searchField" placeholder="Search" liveChange=".onSuggest" enableSuggestions="true" search=".onSearch"
+							suggest=".onSuggest" suggestionItems="{ path: 'oProductModel>/Product', sorter: { path: 'productname' } }">
+							<SuggestionItem text="{oProductModel>productname}" description="{path:'oProductModel>categoryname'} {path:'oProductModel>brandname'}"
+								key="{oProductModel>productid}"/>
+									<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+					
 								<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>
@@ -28,7 +35,7 @@
 							<ToolbarSpacer/>
 							<Button class="ToolbarIcon" icon="sap-icon://cart"  id="cart" tooltip="{i18n>Cart}" press="fnOnAddToCart" />
 							<Button  class="ToolbarIcon" icon="sap-icon://bell"  tooltip="{i18n>Notification}"/>
-							<Button  class="ToolbarIcon" icon="sap-icon://person-placeholder" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
+							<Button  class="ToolbarIcon" icon="sap-icon://person-placeholder"   press="fnOnUser" tooltip="Login/sign Up" id="signIn">
 									<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>
@@ -91,7 +98,9 @@
 													<!--<Text text="{oProductModel>brandname}" class="sapUiTinyMarginTop" ></Text>-->
 													<Text text="{oProductModel>size}{oProductModel>unitshort}" class="sapUiTinyMarginTop"></Text>
 													<RatingIndicator id="RI_XS" maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="12px" tooltip="Rating Tooltip"/>
-													<Text text="MRP : RS {oProductModel>price}"></Text>
+													
+													<HBox><Text text="MRP:" /><Text text="{ parts: [ {path: 'oEmptyModel>/Currency/currency'} ], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: true } }"/>
+                                                    <Text text="{oProductModel>price}"></Text></HBox>
 													<VBox>
 													<Button icon="sap-icon://cart" text="Add to Cart" press="fnCart" class="sapUiTinyMarginTop buttonBg"></Button>
 													<StepInput value="1"  width="10%" min="0" visible="false" id="stepinput" class="sapUiTinyMarginTop stepMargin"></StepInput>
@@ -114,21 +123,25 @@
 							height="auto" alt="Example picture of spotlight"/>
 					</Carousel>
 					<VBox >
-						<Title class="sapUiSmallMarginBegin sapUiSmallMarginTop text" text="Top Sellers" level="H3"/>
+						<Title class="sapUiSmallMarginBegin sapUiSmallMarginTop text" text="On Offers" level="H3"/>
 						<HeaderContainer scrollStep="500" id="container3" scrollStepByItem="1" showDividers="false" showOverflowItem="true"
-							content="{oProductModel>/Category}" class="sapUiSmallMargin">
+							content="{oProductModel>/Product}" class="sapUiSmallMargin">
 							<FlexBox alignItems="Center" justifyContent="Center">
 								<l:Grid defaultSpan="XL2 L2 M3 S6">
 									<l:content >
 										<HBox >
 											<VBox>
-												<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" press="press" backgroundImage="./images/orange-juice.png"></GenericTile>
+												<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" press="press" backgroundImage="{oProductModel>image}"></GenericTile>
 												<VBox class="sapUiTinyMarginBegin tilecolor" alignItems="Center">
-													<Title text="Lays" level="H3" class="sapUiTinyMarginTop"></Title>
+													<Title text="{oProductModel>productname}" level="H3" class="sapUiTinyMarginTop"></Title>
 													<Text text="100g" class="sapUiTinyMarginTop"></Text>
 													<!--<Text text="Brand Name" class="sapUiTinyMarginTop" ></Text>-->
 													<RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="12px" tooltip="Rating Tooltip"/>
-													<Text text="MRP : RS 10"></Text>
+													<HBox><Text class="textstrike" text="MRP: " /><Text class="textstrike" text="{ parts: [ {path: 'oEmptyModel>/Currency/currency'} ], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: true } }"/>
+                                                    <Text class="textstrike" text="{oProductModel>price}"></Text></HBox>
+                                                   	<HBox><Text  text="MRP:" /><Text text="{ parts: [ {path: 'oEmptyModel>/Currency/currency'} ], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: true } }"/>
+                                                    <Text text="{oProductModel>offerprice}"></Text></HBox>
+												<!--	<Text class="textstrike" text="MRP : RS {oProductModel>price} "></Text><Text text= "MRP : RS {oProductModel>offerprice} "></Text>-->
 													<Button icon="sap-icon://cart" text="Add to Cart" press="fnCart" class="sapUiTinyMarginTop"></Button>
 													<StepInput value="1" width="8%" min="0" visible="false" id="stepinput2" class="sapUiTinyMarginTop sapUiSmallMarginBegin"></StepInput>
 												</VBox>

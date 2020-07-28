@@ -372,16 +372,17 @@
 														<ToolbarSpacer></ToolbarSpacer>
 														<Button icon="sap-icon://filter" press="filterDialog"/>
 														<Button icon="sap-icon://synchronize" press="onRefreshBrandTable"></Button>
-														<Input width="auto" placeholder="Search Brand" id="category" liveChange="onSearchBrand"/>
-														<Button icon="sap-icon://add" text="New Brand" press="fnOnNewBrand"></Button>
-														<MenuButton text="Category">
+														<Input width="auto" placeholder="Search Category" id="category" liveChange="onSearchCategory"/>
+														<Button icon="sap-icon://add" text="New Category" press="fnOnNewCate"></Button>
+														<Button icon="sap-icon://delete" text="Delete Category" press="fnOnFragDelCate"></Button>
+														<!--<MenuButton text="Category">
 															<menu>
 																<Menu>
 																	<MenuItem icon="sap-icon://add" text="Category" press="fnOnNewCate"/>
 																	<MenuItem icon="sap-icon://delete" text="Category" press="fnOnFragDelCate"/>
 																</Menu>
 															</menu>
-														</MenuButton>
+														</MenuButton>-->
 														<!--	<Button icon="sap-icon://add" text="New Category" press="fnOnNewCate"></Button>
 														<Button text="Delete Category" press="fnOnFragDelCate"></Button>-->
 													</content>

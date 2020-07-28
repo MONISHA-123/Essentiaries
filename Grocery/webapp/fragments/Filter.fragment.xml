@@ -7,14 +7,14 @@
 					<Title text="{i18n>ShopName}"/>
 				</contentMiddle>
 				<contentRight>
-					<Button icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
+					<Button class="ToolbarIcon" icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
 				</contentRight>
 			</Bar>
 		</customHeader>
 		<VBox>
 		<Title class="sapUiSmallMargin" text="Category"/>
-				<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
-					<SelectList items="{oProductModel>/Category}">
+				<ScrollContainer height="25%" width="100%" horizontal="false" vertical="true">
+					<SelectList class="bgcoloritems" items="{oProductModel>/Category}">
 										<core:Item key="{oProductModel>categoryname}" text="{oProductModel>categoryname}"/>
 									</SelectList>
 		<!--	<tnt:NavigationList>
@@ -31,8 +31,8 @@
 			</tnt:NavigationList>-->
 				</ScrollContainer>
 					<Title class="sapUiSmallMargin"  text="Brand"/>
-				<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
-					<VBox>
+				<ScrollContainer height="10%" width="100%" horizontal="false" vertical="true">
+					<VBox class="brandfilter">
 							
 						<CheckBox  text="Brand2"/>
 							<CheckBox  text="Brand3"/>
@@ -44,8 +44,8 @@
 				<RangeSlider showAdvancedTooltip="true" range="0,500" min="0" max="1000"  width="18rem" class="sapUiLargeMarginBottom" />
 		</VBox>
 		<buttons>
-			<Button text="go" icon="sap-icon://filter" press="fnOnFilter"></Button>
-			<Button text="{i18n>Cancel}" press="fnOnCancel"></Button>
+			<Button class="frgamentbtn" text="go" icon="sap-icon://filter" press="fnOnFilter"></Button>
+			<Button  class="frgamentbtn" text="{i18n>Cancel}" press="fnOnCancel"></Button>
 		</buttons>
 			
 		</Dialog>

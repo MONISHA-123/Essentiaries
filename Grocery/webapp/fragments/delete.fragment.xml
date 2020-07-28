@@ -7,7 +7,7 @@
 					<Title text="{i18n>Company Name}"/>
 				</contentMiddle>
 				<contentRight>
-					<Button icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
+					<Button class="ToolbarIcon" icon="sap-icon://decline" tooltip="Close" press="fnOnCancel" type="Transparent"/>
 				</contentRight>
 			</Bar>
 		</customHeader>
@@ -31,12 +31,12 @@
 							<f:FormElement label="{i18n>CategoryID}" >
 								<f:fields>
 									<Input value="{oEmptyModel>/Category/categoryid}" editable="false" />
-									<Button class="sapUiSmallMarginTop" text="{i18n>Delete}"  press="fnOnCateDel" id="CateDelBtn" enabled="false">
+									<Button class="sapUiSmallMarginTop frgamentbtn" text="{i18n>Delete}"  press="fnOnCateDel" id="CateDelBtn" enabled="false">
 										<layoutData>
 											<l:GridData span="XL6 L6 M6 S6"/>
 										</layoutData>
 									</Button>
-									<Button class="sapUiSmallMarginTop" text="{i18n>Cancel}" press="fnOnNewCateCancel">
+									<Button class="sapUiSmallMarginTop frgamentbtn" text="{i18n>Cancel}" press="fnOnNewCateCancel">
 										<layoutData>
 											<l:GridData span="XL6 L6 M6 S6"/>
 										</layoutData>
