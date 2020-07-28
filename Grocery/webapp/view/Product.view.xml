@@ -3,27 +3,39 @@
 	<App>
 		<pages>
 			<Page title="Title">
-			<customHeader>
-						<tnt:ToolHeader class="ToolbarColor">
-							<Button icon="sap-icon://globe" type="Transparent" press="fnOnZipCode" class="fontWhite" >
+					<customHeader>
+						<tnt:ToolHeader class="header">
+							<!--<Button icon="sap-icon://globe"  press="fnOnZipCode">
 								<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>
-							</Button>
-								<ToolbarSpacer/>
-							<Title  text="Essentiaries" level="H3"/>
+							</Button>-->
+							<SearchField width="20%">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</SearchField>
+						<!--	<ComboBox>
+									<core:ListItem key="Mumbai" text="Mumbai" icon="sap-icon://map"/>
+									<core:ListItem key="Kolkata" text="Kolkata" icon="sap-icon://map"/>
+									<core:ListItem key="Chennai" text="Chennai" icon="sap-icon://map"/>
+									<core:ListItem key="Bangalore" text="Bangalore" icon="sap-icon://map"/>
+							</ComboBox>-->
 							<ToolbarSpacer/>
-							<!--<Button icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}"/>-->
-							<Button icon="sap-icon://bell" type="Transparent" tooltip="{i18n>Notification}" class="fontWhite"/>
-							<Button icon="sap-icon://person-placeholder" type="Transparent" press="fnOnUser" tooltip="Login/sign Up" class="fontWhite">
-								<layoutData>
+							<Title  text="Essentiaries"></Title>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://cart"  tooltip="{i18n>Cart}"/>
+							<Button icon="sap-icon://bell"  tooltip="{i18n>Notification}"/>
+							<Button icon="sap-icon://person-placeholder" press="fnOnUser" tooltip="Login/sign Up" id="signIn">
+								<!--<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
-								</layoutData>
+								</layoutData>-->
 							</Button>
-							<Avatar visible="false" initials="IS" displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu"/>
+							<Avatar visible="false" displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu" id="accountMenu"/>
 						</tnt:ToolHeader>
 					</customHeader>
-					<OverflowToolbar id="otb2">
+		
+				<!--	<OverflowToolbar id="otb2">
 						<Button text="Category" icon="sap-icon://grid" type="Transparent" press="fnSelectCategory" class="button fontWhite">
 							<layoutData>
 								<OverflowToolbarLayoutData priority="NeverOverflow"/>
@@ -34,9 +46,9 @@
 						<Button text="Contact Us" type="Transparent" class="navBarFontOrange"/>
 						<ToolbarSpacer/>
 							<Button text="Cart"  icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}" class="button fontWhite"/>
-					</OverflowToolbar>
+					</OverflowToolbar>-->
 					<Breadcrumbs currentLocationText="Category" class="sapUiSmallMargin">
-						<Link press="onPress" text="Home"/>
+						<Link press="onNavBack" text="Home"/>
 						<!--<Link press="onPress" text="Category"/>-->
 					</Breadcrumbs>
 					<OverflowToolbar>

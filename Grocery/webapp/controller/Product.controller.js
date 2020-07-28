@@ -26,7 +26,7 @@ sap.ui.define([
 		},
 		_onRouteMatched: function (oEvent) {
 			
-			this.id = oEvent.getParameter("arguments").ProductId;
+			this.id = oEvent.getParameter("arguments").CategoryId;
 		/*	this.GETMethod_PROD();
 				this.GETMethod_CATE();
 			this.GETMethod_BRAND();*/
@@ -44,8 +44,8 @@ sap.ui.define([
 
 		},
 			onNavBack: function () {
-			// UIComponent.getRouterFor(this).navTo("adminDashboard");
-			var oHistory, sPreviousHash;
+			UIComponent.getRouterFor(this).navTo("TargetHome");
+		/*	var oHistory, sPreviousHash;
 
 			oHistory = History.getInstance();
 			sPreviousHash = oHistory.getPreviousHash();
@@ -53,9 +53,9 @@ sap.ui.define([
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
 			} else {
-				this.getRouter().navTo("Home", {}, true);
+				this.getRouter().navTo("TargetHome", {}, true);
 
-			}
+			}*/
 		},
 			fnOnCancel:function(){
 				this._oDialog.close();
@@ -64,32 +64,6 @@ sap.ui.define([
 
 			this._oDialog = null;
 		}
-		/**
-		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-		 * (NOT before the first rendering! onInit() is used for that one!).
-		 * @memberOf com.inkathon.Grocery.view.Product
-		 */
-		//	onBeforeRendering: function() {
-		//
-		//	},
-
-		/**
-		 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-		 * This hook is the same one that SAPUI5 controls get after being rendered.
-		 * @memberOf com.inkathon.Grocery.view.Product
-		 */
-		//	onAfterRendering: function() {
-		//
-		//	},
-
-		/**
-		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-		 * @memberOf com.inkathon.Grocery.view.Product
-		 */
-		//	onExit: function() {
-		//
-		//	}
-
 	});
 
 });

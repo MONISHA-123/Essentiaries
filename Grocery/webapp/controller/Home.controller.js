@@ -8,9 +8,10 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/Device",
-	"sap/ui/core/Popup"
+	"sap/ui/core/Popup",
+	"sap/ui/core/routing/History"
 
-], function (Controller, UIComponent, MessageToast, BusyIndicator, JSONModel, Fragment, Filter, FilterOperator, Device, Popup) {
+], function (Controller, UIComponent, MessageToast, BusyIndicator, JSONModel, Fragment, Filter, FilterOperator, Device, Popup,History) {
 	"use strict";
 
 	return Controller.extend("com.inkathon.Grocery.controller.Home", {
@@ -102,11 +103,39 @@ sap.ui.define([
 		//fragment for zip code
 		fnOnZipCode: function (oEvent) {
 			var oButton = oEvent.getSource();
+			// var oButton=this.byId("cart");
 			if (!this._oPopover) {
 
 				Fragment.load({
 
 					name: "com.inkathon.Grocery.fragments.zipPopover",
+
+					controller: this
+
+				}).then(function (oPopover) {
+
+					this._oPopover = oPopover;
+
+					this.getView().addDependent(this._oPopover);
+
+					this._oPopover.openBy(oButton);
+
+				}.bind(this));
+
+			} else {
+
+				this._oPopover.openBy(oButton);
+
+			}
+
+		},
+			fnOnAddToCart: function (oEvent) {
+		 var oButton=this.byId("cart");
+			if (!this._oPopover) {
+
+				Fragment.load({
+
+					name: "com.inkathon.Grocery.fragments.Cart",
 
 					controller: this
 
@@ -801,8 +830,18 @@ sap.ui.define([
 			}
 
 		},
-		fnCategorySelect:function(){
-				this.getRouter().navTo("Product");
+		fnCart :function(oEvent){
+			MessageToast.show("Product Added To Cart ");
+			oEvent.getSource().getParent().getItems()[4].setVisible(false);
+			oEvent.getSource().getParent().getItems()[5].setVisible(true);
+			this.fnOnAddToCart();
+		},
+		fnCategorySelect:function(oEvent){
+		var sPath=oEvent.getSource().getBindingContext("oProductModel").getPath();
+		var id=this.getOwnerComponent().getModel("oProductModel").getProperty(sPath+"/categoryid");
+		this.getRouter().navTo("Product", {
+				CategoryId: id
+			});
 		}
 	});
 });

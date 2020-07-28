@@ -17,22 +17,22 @@
 		<VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center" class="bgDialog">
 			<VBox class="white sapUiSmallMargin">
 				<VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
-					<Title class="sapUiTinyMargin formText" text="{i18n>signUp}"></Title>
+					<Title class="sapUiTinyMargin loginTitle" text="{i18n>signUp}"></Title>
 					<HBox>
-						<core:Icon class="sapUiTinyMarginTop sapUiTinyMarginBegin" size="1.5rem"  src="sap-icon://person-placeholder"/>
+						<core:Icon color="white" class="sapUiTinyMarginTop sapUiTinyMarginBegin" size="1.5rem"  src="sap-icon://person-placeholder"/>
 						<Input class="sapUiTinyMarginBegin" width="7.5rem" placeholder="{i18n>FName}" value="{oEmptyModel>/Registration/fname}"
 							liveChange="fnOnFNameChange" id="idFName"></Input>
 						<Input class="sapUiTinyMarginBegin" width="7.5rem" placeholder="{i18n>Lname}" value="{oEmptyModel>/Registration/lname}"
 							liveChange="fnOnLNameChange" id="idLName"></Input>
 					</HBox>
-					<HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginEnd"><core:Icon class="sapUiTinyMarginTop" size="1.5rem"  src="sap-icon://email"/>
+					<HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginEnd"><core:Icon color="white" class="sapUiTinyMarginTop" size="1.5rem"  src="sap-icon://email"/>
 						<Input class="sapUiTinyMarginBegin" width="15.4rem" type="Email" placeholder="{i18n>Email}" value="{oEmptyModel>/Registration/email}"
 							change="fnOnEmailChange" liveChange="fnOnEmailLiveChange" id="idEmail"></Input>
 					</HBox>
-					<HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginEnd"><core:Icon class="sapUiTinyMarginTop" size="1.5rem"  src="sap-icon://contacts"/>
+					<HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginEnd"><core:Icon color="white" class="sapUiTinyMarginTop" size="1.5rem"  src="sap-icon://contacts"/>
 						<Input class="sapUiTinyMarginBegin" width="15.4rem" placeholder="{i18n>mobile}" value="{oEmptyModel>/Registration/phoneno}" type="Number"/>
 					</HBox>
-					<HBox class="sapUiTinyMarginTop"><core:Icon src="sap-icon://key" class="sapUiTinyMarginTop" size="1.5rem" />
+					<HBox class="sapUiTinyMarginTop"><core:Icon color="white" src="sap-icon://key" class="sapUiTinyMarginTop" size="1.5rem" />
 						<Input width="12.5rem" class="sapUiTinyMarginBegin" placeholder="{i18n>passcode}" type="Password" id="idPwd"
 							value="{oEmptyModel>/Registration/password}" change="fnOnPwdChange" liveChange="fnOnPwdLiveChange"/>
 						<Button class="sapUiTinyMarginBegin" icon="sap-icon://show" id="idShowPwd" press="fnOnShowPassword"/>
@@ -45,8 +45,8 @@
 					<Input class=" sapUiTinyMarginTop sapUiMediumMarginBegin " width="15.3rem" type="Password" value="{oEmptyModel>/Registration/confirmPass}"
 						placeholder="{i18n>Cpassword}" id="idConfirmPwd" liveChange="fnOnConfirmPwdLiveChange" change="fnOnConfirmPwdChange"></Input>
 					<HBox>
-						<CheckBox text="{i18n>terms}" selected="{oEmptyModel>/Registration/terms}" class="formText"></CheckBox>
-						<Link class="sapUiTinyMarginBegin terms " text="terms and condition."></Link>
+						<CheckBox text="{i18n>terms}" selected="{oEmptyModel>/Registration/terms}" class="loginTitle"></CheckBox>
+						<Link class="sapUiTinyMarginBegin terms  whiteLinks" text="terms and condition."></Link>
 					</HBox>
 				</VBox>
 				<VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">

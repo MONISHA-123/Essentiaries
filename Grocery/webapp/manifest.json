@@ -102,7 +102,7 @@
 				"target": ["userDashBoard"]
 			}, {
 				"name": "Product",
-				"pattern": "Product",
+				"pattern": "Product/{CategoryId}",
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["Product"]

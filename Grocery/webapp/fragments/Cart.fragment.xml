@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover
+		title="Cart"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom"
+		contentWidth="20%"
+		contentHeight="30%"
+		>
+			
+	<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					
+					text="Proceed to pay"
+					press="fnCartPage" />
+			</OverflowToolbar>
+		</footer>
+	</Popover>
+</core:FragmentDefinition>

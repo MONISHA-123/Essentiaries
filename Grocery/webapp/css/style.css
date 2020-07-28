@@ -194,6 +194,7 @@ background-color: #cfff9e;
 .header.sapTntToolHeader.sapMTB {
 	
     background-color:#6e1f1f;
+    font-size: large;
    
 }
 
@@ -204,10 +205,51 @@ background-color: #cfff9e;
 .headertext{
 	 color: #de8941;
 }
-.sapMLnk:not(.sapMLnkDsbl) {
-    text-shadow: none;
-    color:white;
+.whiteLinks.sapMLnk:not(.sapMLnkDsbl) {
+    text-shadow: none !important;
+    color:white !important;
 }
-.sapMLnk:visited {
-    color: white;
+.whiteLinks.sapMLnk:visited {
+    color: white!important;
+}
+.ToolbarIcon.sapTntToolHeader .sapMBtn .sapMBtnTransparent .sapUiIcon, .ToolbarIcon.sapTntToolHeader .sapMBtn .sapMBtnDefault .sapUiIcon, .ToolbarIcon.sapTntToolHeader .sapMBtn .sapMBtnBack .sapUiIcon,.ToolbarIcon .sapTntToolHeader .sapMBtn .sapMBtnUp .sapUiIcon {
+    color: #ffffff!important;
+}
+.tilecolor{
+background-color:white;
+}
+/*....................Button ........*/
+.sapMBtnInner {
+	background-color:#6E1F1F!important;
+	color:white !important;
+	border: .0625rem solid #560606 !important;
+}
+/*....................Icons in Button ........*/
+.sapMBtnIcon{
+	color:white !important;
+}
+/*....................Step Input background ........*/
+.sapMInputBaseContentWrapper {
+    border: .0625rem solid #000000 !important;
+    background:#6E1F1F !important;
+    border-radius: .3rem !important;
+   
+}
+/*....................Step Input Value .......*/
+.sapMInputBaseInner {
+    color: #ffffff;
+}
+/*....................Step Input + and - Button ........*/
+.sapMInputBaseIconContainer .sapMInputBaseIcon {
+    color: #ffffff;
+}
+.sapMInputBaseIconContainer .sapMInputBaseIcon:hover {
+    background-color: #6E1F1F;
+}
+/*................tilte in fragments....*/
+.loginTitle {
+	 color: #ffffff;
+}
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color:#6E1F1F;
 }
