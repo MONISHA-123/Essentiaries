@@ -128,7 +128,11 @@ sap.ui.define([
 	// this.getView().byId('BPGroupSelect').getSelectedKey()
 			// var cate = this.getView().getModel("oEmptyModel").getProperty("/Category/categoryname");
 				// var cate=Fragment.byId("idFilter", "Cate").getSelectedItem();
+				var idpath=oEvent.getSource().getSelectedItem().getBindingContext("oProductModel").sPath;
+				this.id1 =this.getOwnerComponent().getModel("oProductModel").getProperty(idpath+"/categoryid");
+				console.log(this.id1);
 			var cate=oEvent.getSource().getSelectedItem().getKey();
+			this.selectedCate=oEvent.getSource().getSelectedItem().getKey();
 			var oPro;
 			this.getView().getModel("oEmptyModel").setProperty("/cateWiseBrand", []);
 			var aCWB = this.getView().getModel("oEmptyModel").getProperty("/cateWiseBrand");
@@ -150,6 +154,40 @@ sap.ui.define([
 			this._oDialog.destroy();
 
 			this._oDialog = null;
+		},
+		fnOnFilter :function(oEvent){
+		//	var sPath=oEvent.getSource().getBindingContext("oProductModel").getPath();
+		//	var id=this.getOwnerComponent().getModel("oProductModel").getProperty(sPath+"/categoryid");
+			//this.selectedCate\
+			console.log(this.id1);
+			var that = this;
+
+			var sUrl = "/AdminModule/api/productbycategory/"+this.id1;
+			$.ajax({
+				url: sUrl,
+				data: null,
+				async: true,
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				headers: {
+					"x-CSRF-Token": "fetch"
+				},
+				error: function (err) {
+					MessageToast.show("Category Fetch Destination Failed");
+				},
+				success: function (data, status, xhr) {
+
+					MessageToast.show("Succussfully consumed destination from CF!");
+					that.cateCount = data.length;
+					console.log(data);
+					that.getOwnerComponent().getModel("oProductModel").setProperty("/CategoryByProduct", data);
+
+				},
+				type: "GET"
+			}).always(function (data, status, xhr) {
+				that.token = xhr.getResponseHeader("x-CSRF-Token");
+
+			});
 		}
 	});
 

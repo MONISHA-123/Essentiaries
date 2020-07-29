@@ -58,7 +58,7 @@ sap.ui.define([
 				success: function (data, status, xhr) {
 
 					MessageToast.show("Succussfully consumed destination from CF!");
-					that.cateCount = data.length;
+					that.prodCount = data.length;
 
 					that.getOwnerComponent().getModel("oProductModel").setProperty("/Product", data);
 					
@@ -90,7 +90,7 @@ sap.ui.define([
 				success: function (data, status, xhr) {
 
 					MessageToast.show("Succussfully consumed destination from CF!");
-					that.cateCount = data.length;
+					that.offerCount = data.length;
 
 					that.getOwnerComponent().getModel("oProductModel").setProperty("/offers", data);
 					

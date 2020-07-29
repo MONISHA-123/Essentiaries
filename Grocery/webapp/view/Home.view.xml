@@ -129,7 +129,7 @@
 					<VBox >
 						<Title class="sapUiSmallMarginBegin sapUiSmallMarginTop text" text="On Offers" level="H3"/>
 						<HeaderContainer scrollStep="500" id="container3" scrollStepByItem="1" showDividers="false" showOverflowItem="true"
-							content="{oProductModel>/offers	}" class="sapUiSmallMargin">
+							content="{oProductModel>/offers}" class="sapUiSmallMargin">
 							<FlexBox alignItems="Center" justifyContent="Center">
 								<l:Grid defaultSpan="XL2 L2 M3 S6">
 									<l:content >
