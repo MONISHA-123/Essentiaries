@@ -36,7 +36,7 @@ sap.ui.define([
 			this.getView().setModel(oEmptyModel, "oEmptyModel");
 			this.GETMethod_CATE();
 			this.GETMethod_Prod();
-			
+			this.GETMethod_ProdOffers();
 				
 		},
 			GETMethod_Prod: function () {
@@ -61,6 +61,38 @@ sap.ui.define([
 					that.cateCount = data.length;
 
 					that.getOwnerComponent().getModel("oProductModel").setProperty("/Product", data);
+					
+					//console.log(data);
+
+				},
+				type: "GET"
+			}).always(function (data, status, xhr) {
+				that.token = xhr.getResponseHeader("x-CSRF-Token");
+				//console.log(that.token);
+			});
+		},
+		GETMethod_ProdOffers: function () {
+			var that = this;
+
+			var sUrl = "/AdminModule/api/offers";
+			$.ajax({
+				url: sUrl,
+				data: null,
+				async: true,
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				headers: {
+					"x-CSRF-Token": "fetch"
+				},
+				error: function (err) {
+					MessageToast.show("Product Fetch Destination Failed");
+				},
+				success: function (data, status, xhr) {
+
+					MessageToast.show("Succussfully consumed destination from CF!");
+					that.cateCount = data.length;
+
+					that.getOwnerComponent().getModel("oProductModel").setProperty("/offers", data);
 					
 					//console.log(data);
 

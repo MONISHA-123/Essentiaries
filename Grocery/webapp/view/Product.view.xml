@@ -31,7 +31,7 @@
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>-->
 							</Button>
-							<Avatar visible="false" displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu" id="accountMenu"/>
+							<Avatar visible="false" displaySize="XS" backgroundColor="Transparent" press="fnAccountMenu" id="accountMenu"/>
 						</tnt:ToolHeader>
 					</customHeader>
 		
