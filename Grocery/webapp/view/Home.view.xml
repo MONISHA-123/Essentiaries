@@ -7,7 +7,7 @@
 				<Page id="page"  >
 					<customHeader>
 						<tnt:ToolHeader class="header">
-							<SearchField  width="10%" id="searchField" placeholder="Search" liveChange=".onSuggest" enableSuggestions="true" search=".onSearch"
+							<SearchField  width="15%" id="searchField" placeholder="Search" liveChange=".onSuggest" enableSuggestions="true" search=".onSearch"
 							suggest=".onSuggest" suggestionItems="{ path: 'oProductModel>/Product', sorter: { path: 'productname' } }">
 							<SuggestionItem text="{oProductModel>productname}" description="{path:'oProductModel>categoryname'} {path:'oProductModel>brandname'}"
 								key="{oProductModel>productid}"/>
@@ -33,12 +33,14 @@
 						
 							</Title>
 							<ToolbarSpacer/>
-							<Button class="ToolbarIcon" icon="sap-icon://cart"  id="cart" tooltip="{i18n>Cart}" press="fnOnAddToCart" />
-							<Button  class="ToolbarIcon" icon="sap-icon://bell"  tooltip="{i18n>Notification}"/>
-							<Button  class="ToolbarIcon" icon="sap-icon://person-placeholder"   press="fnOnUser" tooltip="Login/sign Up" id="signIn">
+							<Button class="ToolbarIcon" icon="sap-icon://cart"  id="cart" tooltip="{i18n>Cart}" press="fnOnAddToCart" >
 									<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>
+							</Button>
+							<Button  class="ToolbarIcon" icon="sap-icon://bell"  tooltip="{i18n>Notification}"/>
+							<Button  class="ToolbarIcon" icon="sap-icon://person-placeholder"   press="fnOnUser" tooltip="Login/sign Up" id="signIn">
+								
 							</Button>
 							<Avatar visible="false" displaySize="XS" backgroundColor="Accent5" press="fnAccountMenu" id="accountMenu">
 									<layoutData>
@@ -103,7 +105,7 @@
                                                     <Text text="{oProductModel>price}"></Text></HBox>
 													<VBox>
 													<Button icon="sap-icon://cart" text="Add to Cart" press="fnCart" class="sapUiTinyMarginTop buttonBg"></Button>
-													<StepInput value="1"  width="10%" min="0" visible="false" id="stepinput" class="sapUiTinyMarginTop stepMargin"></StepInput>
+													<StepInput value="1"  width="10%" min="0" visible="false" id="stepinput" class="sapUiTinyMarginTop stepMargin" ></StepInput>
 													</VBox>
 													
 												</VBox>

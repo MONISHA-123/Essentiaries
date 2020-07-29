@@ -47,20 +47,20 @@
 						<ToolbarSpacer/>
 							<Button text="Cart"  icon="sap-icon://cart" type="Transparent" tooltip="{i18n>Cart}" class="button fontWhite"/>
 					</OverflowToolbar>-->
-					<Breadcrumbs currentLocationText="Category" class="sapUiSmallMargin">
+					<Breadcrumbs currentLocationText="{oProductModel>/CategoryByProduct/0/categoryname}" class="sapUiSmallMargin">
 						<Link press="onNavBack" text="Home"/>
 						<!--<Link press="onPress" text="Category"/>-->
 					</Breadcrumbs>
-					<OverflowToolbar>
-						<Text text="{oProductModel>/CategoryByProduct/0/categoryname}"/>
+					<OverflowToolbar >
+						<Title text="{oProductModel>/CategoryByProduct/0/categoryname}" level="H2" class="sapUiSmallMarginBottom" />
 						<ToolbarSpacer/>
-						<ComboBox >
+						<ComboBox class="sapUiSmallMarginBottomTop" selectedKey="Popularity" id="CateDD">
 							<core:Item text="Popularity" key="Popularity"/>
 							<core:Item text="Price: High to Low" key="HTL"/>
 							<core:Item text="Price: Low to High" key="LTH"/>
 							<core:Item text="Sort A-Z" key="A-Z"/>
 						</ComboBox>
-						<Button text="Filter" press="fnFilter" icon="sap-icon://filter"/>
+						<Button text="Filter" press="fnFilter" icon="sap-icon://filter" class="sapUiSmallMarginBottomTop"/>
 					</OverflowToolbar>
 						<f:GridList id="gridList"
 					
@@ -108,6 +108,41 @@
 									</l:content>
 								</l:Grid>
 							</FlexBox>-->
+								<l:VerticalLayout id="containerLayout" width="100%" class="footer sapUiTinyMarginTop">
+						<l:BlockLayout id="BlockLayout">
+							<l:BlockLayoutRow>
+								<l:BlockLayoutCell >
+									<Title text="Category"/>
+									<SelectList items="{oProductModel>/Category}">
+										<core:Item key="{oProductModel>categoryname}" text="{oProductModel>categoryname}"/>
+									</SelectList>
+								</l:BlockLayoutCell>
+								<l:BlockLayoutCell>
+									<Title text="Essentiaries"/>
+									<SelectList>
+										<core:Item key="About us" text="About us"/>
+										<core:Item key="FAQ" text="FAQ"/>
+										<core:Item key="Privacy Policy" text="Privacy Policy"/>
+											<core:Item key="Careers" text="Careers" />
+										<core:Item key="Terms and Conditions" text="Terms and Conditions"/>
+									</SelectList>
+								</l:BlockLayoutCell>
+								<l:BlockLayoutCell>
+							<Title text="Contact Us"/>
+								<HBox class="sapUiTinyMargin">	<core:Icon size="1rem"  src="sap-icon://email"/>
+									<Link text="info@essentiaries.com"/></HBox>	
+										<HBox class="sapUiTinyMarginBegin">	<core:Icon  size="1rem"  src="sap-icon://call"/>
+									<Link text="1800 000 1450"/></HBox>	
+								
+								</l:BlockLayoutCell>
+								<l:BlockLayoutCell>
+									<Title text="Newsletter"/>
+									<HBox><Input placeholder="email"/>
+									<Button icon="sap-icon://paper-plane" /></HBox>	
+								</l:BlockLayoutCell>
+							</l:BlockLayoutRow>
+						</l:BlockLayout>
+					</l:VerticalLayout>
 			</Page>
 		</pages>
 	</App>

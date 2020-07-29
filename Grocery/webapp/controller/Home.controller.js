@@ -31,6 +31,7 @@ sap.ui.define([
 			oEmptyModel.setProperty("/ForgotPassword", {
 				"email": ""
 			});
+			this.getOwnerComponent().getModel("oProductModel").setProperty("/Cart",[]);
 			oEmptyModel.setProperty("/Currency", {"currency":"₹"});
 			this.getView().setModel(oEmptyModel, "oEmptyModel");
 			this.GETMethod_CATE();
@@ -826,7 +827,52 @@ sap.ui.define([
 			MessageToast.show("Product Added To Cart ");
 			oEvent.getSource().getParent().getItems()[0].setVisible(false);
 			oEvent.getSource().getParent().getItems()[1].setVisible(true);
+			
+			var Path=oEvent.getSource().getBindingContext("oProductModel").sPath;
+			var oData=this.getOwnerComponent().getModel("oProductModel").getProperty(Path);
+			this.getOwnerComponent().getModel("oProductModel").setProperty(Path+"/quantity",1);
+			this.getOwnerComponent().getModel("oProductModel").getProperty("/Cart").unshift(oData);
+			var price=this.getOwnerComponent().getModel("oProductModel").getProperty(Path+"/price");
+			 this.getOwnerComponent().getModel("oProductModel").setProperty(Path+"/amount",price);
+			console.log(this.getOwnerComponent().getModel("oProductModel").getProperty(Path));
+			
+			
+			this.getOwnerComponent().getModel("oProductModel").refresh();
+		this.fnTotalCalc();
+		
+			
 			 this.fnOnAddToCart();
+		},
+		onChange: function (oEvent) {
+			var iQuantity = oEvent.getParameters().value;
+			var Path = oEvent.getSource().getParent().getBindingContextPath();
+			var iAmount = iQuantity * (this.getOwnerComponent().getModel("oProductModel").getProperty(Path+"/price"));
+				var Amount= iAmount.toFixed(2);
+				iAmount=parseFloat(Amount);
+			this.getOwnerComponent().getModel("oProductModel").setProperty(Path+"/amount", iAmount);
+			this.fnTotalCalc();
+
+		},
+		fnTotalCalc: function () {
+		var total = 0;
+			var oEmptyModel = this.getOwnerComponent().getModel("oProductModel").getProperty("/Cart");
+			for (var j = 0; j < oEmptyModel.length; j++){
+			total+=this.getOwnerComponent().getModel("oProductModel").getProperty("/Cart/" + j + "/amount");
+				
+			}
+			
+			this.getOwnerComponent().getModel("oProductModel").setProperty("/Total", total);
+		},
+			fnOnDelete: function (oEvent) {
+			var sPath = oEvent.getSource().getParent().getBindingContextPath();
+			var index = sPath.lastIndexOf("/");
+			var lastIndexValue = sPath.charAt(index + 1);
+			var aList = this.getOwnerComponent().getModel("oProductModel").getProperty("/Cart");
+			aList.splice(lastIndexValue, 1);
+			this.getOwnerComponent().getModel("oProductModel").getProperty("/Cart", aList);
+			this.getOwnerComponent().getModel("oProductModel").refresh();
+			 this.fnTotalCalc();
+
 		},
 		fnCategorySelect:function(oEvent){
 		var sPath=oEvent.getSource().getBindingContext("oProductModel").getPath();
